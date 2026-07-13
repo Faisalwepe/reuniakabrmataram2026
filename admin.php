@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Reuni Akbar '26</title>
+    <!-- Favicon Dinamis untuk Admin -->
+    <link id="admin-favicon" rel="icon" type="image/png" href="https://placehold.co/32x32">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,7 +19,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100">
             <div class="text-center mb-8">
-                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">RA</div>
+                <img id="login-logo" src="https://placehold.co/64x64/1e40af/ffffff?text=RA" class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                 <h1 class="text-2xl font-bold text-slate-800">Admin Login</h1>
                 <p class="text-slate-500 text-sm">Masuk untuk mengelola data reuni</p>
             </div>
@@ -37,6 +39,12 @@
     </div>
     
     <script>
+        // Tarik logo untuk halaman login
+        fetch('api.php?action=get_pengaturan').then(r=>r.json()).then(data=>{
+            if(data.logo_utama) document.getElementById('login-logo').src = data.logo_utama;
+            if(data.favicon) document.getElementById('admin-favicon').href = data.favicon;
+        });
+
         function doLogin() {
             const formData = new FormData();
             formData.append('username', document.getElementById('username').value);
@@ -60,7 +68,7 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex h-full">
             <div class="p-6 border-b border-slate-800 flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-bold">RA</div>
+                <img id="sidebar-logo" src="https://placehold.co/32x32/1e40af/ffffff?text=RA" class="w-8 h-8 rounded object-cover">
                 <div>
                     <span class="font-bold text-lg block leading-tight">Admin Panel</span>
                     <span class="text-xs text-blue-400 capitalize"><?= $role ?></span>
@@ -73,7 +81,6 @@
                 
                 <div class="pt-4 mt-2 border-t border-slate-800">
                     <p class="px-4 text-xs font-semibold text-slate-500 uppercase mb-2">Manajemen</p>
-                    
                     <?php if ($role === 'administrator'): ?>
                         <a href="#" onclick="switchTab('pengaturan')" id="nav-pengaturan" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors"><i class="fas fa-image w-5"></i> Konten & Gambar</a>
                         <a href="#" onclick="switchTab('users')" id="nav-users" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors"><i class="fas fa-user-cog w-5"></i> Akun User</a>
@@ -98,9 +105,9 @@
                         <button onclick="exportCSV('semua')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2 shadow-sm"><i class="fas fa-file-csv"></i> Ekspor Semua (CSV)</button>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
                         <!-- Card Total Real -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 col-span-1 md:col-span-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 col-span-1 md:col-span-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
                             <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-3xl"><i class="fas fa-users"></i></div>
                             <div>
                                 <p class="text-blue-100 font-medium">Total Seluruh Orang Yang Akan Hadir</p>
@@ -131,12 +138,21 @@
                             </div>
                         </div>
                         
-                        <!-- Card Donasi -->
+                        <!-- Card Donasi (Pihak) -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xl"><i class="fas fa-hand-holding-heart"></i></div>
                                 <div><p class="text-slate-500 text-sm font-medium">Total Donatur</p><p class="text-2xl font-bold text-slate-800" id="total-donatur">0 <span class="text-sm font-normal text-slate-500">Pihak</span></p></div>
                             </div>
+                        </div>
+
+                        <!-- Card Uang Donasi -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col bg-slate-800 text-white">
+                            <div class="flex items-center gap-4 mb-2">
+                                <div class="w-12 h-12 rounded-full bg-white/20 text-white flex items-center justify-center text-xl"><i class="fas fa-wallet"></i></div>
+                                <div><p class="text-slate-300 text-sm font-medium">Total Uang Donasi</p></div>
+                            </div>
+                            <p class="text-2xl font-bold mt-2" id="total-donasi-rp">Rp 0</p>
                         </div>
                     </div>
                 </div>
@@ -210,7 +226,9 @@
                 <!-- 4. PENGATURAN KONTEN -->
                 <div id="section-pengaturan" class="hidden">
                     <h1 class="text-2xl font-bold mb-6">Manajemen Konten & Gambar</h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b border-slate-200 pb-2">Identitas & Pembayaran</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
                             <h3 class="font-bold text-slate-800 mb-4 border-b pb-2">Favicon Web</h3>
                             <div class="flex items-center gap-4 mb-4">
@@ -219,7 +237,7 @@
                             </div>
                         </div>
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                            <h3 class="font-bold text-slate-800 mb-4 border-b pb-2">Logo Utama Navbar</h3>
+                            <h3 class="font-bold text-slate-800 mb-4 border-b pb-2">Logo Utama</h3>
                             <div class="flex items-center gap-4 mb-4">
                                 <img id="preview-logo_utama" src="https://placehold.co/100x100" class="w-16 h-16 rounded-full border object-cover">
                                 <input type="file" accept="image/*" class="text-xs w-full" onchange="convertToBase64(this, 'preview-logo_utama', 'logo_utama')">
@@ -232,6 +250,17 @@
                                 <input type="file" accept="image/*" class="text-xs w-full" onchange="convertToBase64(this, 'preview-qris_donasi', 'qris_donasi')">
                             </div>
                         </div>
+                    </div>
+
+                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b border-slate-200 pb-2">Galeri Foto (Muncul di Halaman Depan)</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <?php for($i=1; $i<=8; $i++): ?>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-sm text-slate-800 mb-2">Slot Foto <?= $i ?></h3>
+                            <img id="preview-galeri_<?= $i ?>" src="https://placehold.co/300x300?text=Foto+<?= $i ?>" class="w-full h-32 rounded object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-galeri_<?= $i ?>', 'galeri_<?= $i ?>')">
+                        </div>
+                        <?php endfor; ?>
                     </div>
                 </div>
 
@@ -332,23 +361,34 @@
                 calculateTotals(data);
             });
             if(isAdmin) loadUsers();
-            loadImages();
+            loadImages(); // Termasuk logo & galeri
         }
 
         // --- KALKULASI DASHBOARD ---
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+        }
+
         function calculateTotals(data) {
             let formIndividu = data.individu.length;
             let formKelompok = data.kelompok.length;
             let orangIndividu = 0, orangKelompok = 0, donatur = 0;
+            let totalDonasiRp = 0; // Tambahan untuk kalkulasi total donasi dalam rupiah
 
             data.individu.forEach(r => {
                 orangIndividu += (1 + parseInt(r.jumlah_pendamping || 0));
-                if(r.berdonasi.includes("Ya")) donatur++;
+                if(r.berdonasi.includes("Ya")) {
+                    donatur++;
+                    totalDonasiRp += parseInt(r.nominal_donasi || 0);
+                }
             });
             
             data.kelompok.forEach(r => {
                 orangKelompok += parseInt(r.jumlah_anggota || 0);
-                if(r.berdonasi.includes("Ya")) donatur++;
+                if(r.berdonasi.includes("Ya")) {
+                    donatur++;
+                    totalDonasiRp += parseInt(r.nominal_donasi || 0);
+                }
             });
 
             document.getElementById('total-form-individu').innerHTML = `${formIndividu} <span class="text-sm font-normal text-slate-500">Form</span>`;
@@ -359,13 +399,12 @@
 
             document.getElementById('total-semua-orang').innerHTML = `${orangIndividu + orangKelompok} <span class="text-lg font-normal">Orang</span>`;
             document.getElementById('total-donatur').innerHTML = `${donatur} <span class="text-sm font-normal text-slate-500">Pihak</span>`;
+            
+            // Set Nominal Uang Donasi
+            document.getElementById('total-donasi-rp').innerText = formatRupiah(totalDonasiRp);
         }
 
         // --- RENDER TABEL ---
-        function formatRupiah(angka) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
-        }
-
         function renderTables(data) {
             const tbIndividu = document.getElementById('tbody-individu');
             tbIndividu.innerHTML = data.individu.map(r => `
@@ -385,7 +424,7 @@
                 <tr class="hover:bg-slate-50">
                     <td class="p-4 text-xs whitespace-nowrap">${r.tanggal_daftar}</td>
                     <td class="p-4 font-medium">${r.nama_perwakilan}</td>
-                    <td class="p-4">${r.asal_sekolah} (${r.angkatan})</td>
+                    <td class="p-4">${r.sekolah_angkatan || (r.asal_sekolah + " - " + r.angkatan)}</td>
                     <td class="p-4 font-bold text-blue-600">${r.jumlah_anggota} Org</td>
                     <td class="p-4">${r.no_wa_kelompok}</td>
                     <td class="p-4"><span class="px-2 py-1 rounded text-xs font-semibold ${r.berdonasi.includes('Ya') ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'}">${r.berdonasi}</span></td>
@@ -400,7 +439,6 @@
             const input = document.getElementById(inputId).value.toLowerCase();
             const rows = document.getElementById(tbodyId).getElementsByTagName('tr');
             for (let i = 0; i < rows.length; i++) {
-                // Asumsi nama selalu ada di kolom ke-2 (index 1)
                 const nameCol = rows[i].getElementsByTagName('td')[1]; 
                 if (nameCol) {
                     const txtValue = nameCol.textContent || nameCol.innerText;
@@ -424,11 +462,11 @@
 
             if (tipe === 'kelompok' || tipe === 'semua') {
                 if(tipe === 'semua') { csv.push(""); csv.push("--- JALUR KELOMPOK ---"); }
-                csv.push("Tanggal,Tipe,Nama Perwakilan,Asal Sekolah & Angkatan,No WA Perwakilan,Jml Anggota (Total Hadir),Daftar Anggota,Donasi,Nominal Donasi");
+                csv.push("Tanggal,Tipe,Nama Perwakilan,Sekolah & Angkatan,No WA Perwakilan,Jml Anggota (Total Hadir),Daftar Anggota,Donasi,Nominal Donasi");
                 dataGlobal.kelompok.forEach(r => {
-                    // Clean newlines for CSV string
-                    let cleanDaftar = r.daftar_anggota.replace(/(\r\n|\n|\r)/gm, " | ");
-                    csv.push(`"${r.tanggal_daftar}","Kelompok","${r.nama_perwakilan}","${r.asal_sekolah} (${r.angkatan})","'${r.no_wa_kelompok}","${r.jumlah_anggota}","${cleanDaftar}","${r.berdonasi}","${r.nominal_donasi}"`);
+                    let cleanDaftar = (r.daftar_anggota || "").replace(/(\r\n|\n|\r)/gm, " | ");
+                    let sekolahAngkatan = r.sekolah_angkatan || `${r.asal_sekolah} - ${r.angkatan}`;
+                    csv.push(`"${r.tanggal_daftar}","Kelompok","${r.nama_perwakilan}","${sekolahAngkatan}","'${r.no_wa_kelompok}","${r.jumlah_anggota}","${cleanDaftar}","${r.berdonasi}","${r.nominal_donasi}"`);
                 });
             }
 
@@ -471,7 +509,7 @@
         function editUser(id, username, role) {
             document.getElementById('u-id').value = id;
             document.getElementById('u-username').value = username;
-            document.getElementById('u-username').disabled = (username === 'admin'); // Jaga agar username master tidak diubah
+            document.getElementById('u-username').disabled = (username === 'admin'); 
             document.getElementById('u-role').value = role;
             document.getElementById('u-password').value = '';
             document.getElementById('u-password').required = false;
@@ -520,17 +558,33 @@
 
         // --- MANAJEMEN KONTEN GAMBAR ---
         function loadImages() {
-            if(!isAdmin) return;
             fetch('api.php?action=get_pengaturan').then(res => res.json()).then(data => {
+                // Terapkan ke Dashboard UI Admin itu Sendiri
+                if(data.favicon) document.getElementById('admin-favicon').href = data.favicon;
+                if(data.logo_utama) document.getElementById('sidebar-logo').src = data.logo_utama;
+                
+                // Terapkan ke menu Manajemen Konten (Jika dia adalah Administrator)
+                if(!isAdmin) return;
+                
                 if(data.favicon) document.getElementById('preview-favicon').src = data.favicon;
                 if(data.logo_utama) document.getElementById('preview-logo_utama').src = data.logo_utama;
                 if(data.qris_donasi) document.getElementById('preview-qris_donasi').src = data.qris_donasi;
+                
+                // Load 8 Galeri
+                for(let i=1; i<=8; i++) {
+                    if(data[`galeri_${i}`]) {
+                        document.getElementById(`preview-galeri_${i}`).src = data[`galeri_${i}`];
+                    }
+                }
             });
         }
 
         function convertToBase64(fileInput, previewId, dbKey) {
             const file = fileInput.files[0];
             if (file) {
+                // Jika ingin limit ukuran file bisa ditambahkan disini
+                // if (file.size > 2000000) { alert('Ukuran file maks 2MB'); return; }
+
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64String = e.target.result;
@@ -540,6 +594,7 @@
                         body: JSON.stringify({ kunci: dbKey, nilai: base64String })
                     }).then(res => res.json()).then(res => {
                         if(res.status === 'success') alert('Gambar berhasil diperbarui!');
+                        else alert('Terjadi kesalahan saat menyimpan gambar.');
                     });
                 };
                 reader.readAsDataURL(file);
