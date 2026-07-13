@@ -10,16 +10,24 @@ header("Access-Control-Allow-Headers: Content-Type");
 // ==========================================
 $host = "localhost";
 $db_name = "bald6243_db_reuni2026";
-$username = "bald6243_reuniakbar2026"; // Sesuaikan dengan username database Anda (default XAMPP: root)
-$password = "m[Ucp__.QtpJF2Fu";     // Sesuaikan dengan password database Anda (default XAMPP: kosong)
+$username = "bald6243_reuniakbar2026"; // Sesuaikan dengan username database Anda
+$password = "m[Ucp__.QtpJF2Fu";     // Sesuaikan dengan password database Anda
 
 
 try {
     $conn = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    // Auto-fix tabel admin jika kolom role belum ada (mencegah error jika lupa update SQL)
+    // Auto-fix tabel admin & pengecekan pengaturan
     $conn->query("ALTER TABLE admin_users ADD COLUMN IF NOT EXISTS role ENUM('administrator', 'admin') DEFAULT 'admin'");
+    
+    // Memastikan baris galeri_1 s/d galeri_8 ada di database jika belum (Opsional namun aman)
+    for($i=1; $i<=8; $i++) {
+        $cek = $conn->query("SELECT * FROM pengaturan_website WHERE kunci_pengaturan = 'galeri_$i'")->rowCount();
+        if($cek == 0) {
+            $conn->query("INSERT INTO pengaturan_website (kunci_pengaturan, nilai_pengaturan) VALUES ('galeri_$i', '')");
+        }
+    }
 } catch(PDOException $exception) {
     echo json_encode(["status" => "error", "message" => "Koneksi database gagal: " . $exception->getMessage()]);
     exit;
@@ -46,7 +54,6 @@ if ($action == 'login') {
         $_SESSION['admin_username'] = $admin['username'];
         echo json_encode(["status" => "success", "message" => "Login berhasil"]);
     } else {
-        // Auto-fix khusus username 'admin' dan pass 'faisal' jika error hash
         if ($user === 'admin' && $pass === 'faisal') {
             $newHash = password_hash('faisal', PASSWORD_DEFAULT);
             $conn->query("UPDATE admin_users SET password = '$newHash', role='administrator' WHERE username = 'admin'");
@@ -82,7 +89,8 @@ if ($action == 'get_pengaturan') {
 if ($action == 'submit_daftar' && !empty($data['tipe_pendaftaran'])) {
     $tipe = $data['tipe_pendaftaran'];
     $berdonasi = $data['berdonasi'] ?? 'Tidak';
-    // Tangkap nominal donasi (ubah ke format integer murni tanpa titik)
+    
+    // Tangkap nominal donasi (pastikan pure integer)
     $nominal = isset($data['nominalDonasi']) ? preg_replace("/[^0-9]/", "", $data['nominalDonasi']) : 0;
     if (empty($nominal)) $nominal = 0;
 
@@ -94,15 +102,27 @@ if ($action == 'submit_daftar' && !empty($data['tipe_pendaftaran'])) {
                 'wa' => $data['wa'], 'domisili' => $data['domisili'], 'jml' => $data['jmlPendamping'], 'berdonasi' => $berdonasi, 'nominal' => $nominal
             ]);
         } else {
-            $parts = explode(" - Angkatan ", $data['sekolahAngkatan']);
+            // Karena payload formatnya gabungan "SMA X - Angkatan Y" kita bisa pecah atau masukkan mentah
+            $sekolahAngkatan = $data['sekolahAngkatan'];
+            $parts = explode(" - Angkatan ", $sekolahAngkatan);
+            
+            // Cek apakah tabel pendaftaran_kelompok mendukung kolom sekolah_angkatan atau harus dipisah
+            // Jika Anda sudah mengubah struktur tabel menjadi 1 kolom (sekolah_angkatan)
+            // Kami memasukkan asal sekolah sebagai fallback jika database masih minta asal_sekolah & angkatan.
+            
             $stmt = $conn->prepare("INSERT INTO pendaftaran_kelompok (nama_perwakilan, no_wa_kelompok, asal_sekolah, angkatan, jumlah_anggota, daftar_anggota, berdonasi, nominal_donasi) VALUES (:nama, :wa, :asal, :angkatan, :jml, :daftar, :berdonasi, :nominal)");
+            
             $berhasil = $stmt->execute([
-                'nama' => $data['namaPerwakilan'], 'wa' => $data['waKelompok'], 'asal' => $parts[0] ?? '-',
-                'angkatan' => $parts[1] ?? '-', 'jml' => $data['jumlahAnggota'], 'daftar' => $data['daftarNama'], 'berdonasi' => $berdonasi, 'nominal' => $nominal
+                'nama' => $data['namaPerwakilan'], 'wa' => $data['waKelompok'], 
+                'asal' => $parts[0] ?? '-', 'angkatan' => $parts[1] ?? '-', 
+                'jml' => $data['jumlahAnggota'], 'daftar' => $data['daftarNama'], 
+                'berdonasi' => $berdonasi, 'nominal' => $nominal
             ]);
         }
         echo json_encode(["status" => $berhasil ? "success" : "error"]);
-    } catch (PDOException $e) { echo json_encode(["status" => "error", "message" => $e->getMessage()]); }
+    } catch (PDOException $e) { 
+        echo json_encode(["status" => "error", "message" => $e->getMessage()]); 
+    }
     exit;
 }
 
@@ -171,7 +191,7 @@ if ($action == 'save_user' && $is_administrator) {
 
 if ($action == 'delete_user' && $is_administrator) {
     $uid = $data['id'];
-    if ($uid != $_SESSION['admin_id']) { // Tidak bisa hapus diri sendiri
+    if ($uid != $_SESSION['admin_id']) { 
         $conn->prepare("DELETE FROM admin_users WHERE id=?")->execute([$uid]);
         echo json_encode(["status" => "success"]);
     } else {
