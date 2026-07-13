@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuni Akbar Lintas Angkatan</title>
     
-    <!-- 
-      TODO: Ganti atribut href di bawah ini dengan Base64 Favicon Anda.
-      Contoh: href="data:image/png;base64,iVBORw0KGgo..." 
-    -->
-    <link rel="icon" type="image/png" href="https://placehold.co/32x32/1e40af/ffffff?text=RA">
+    <!-- ID dinamis agar favicon bisa diubah dari database melalui script di bawah -->
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="https://placehold.co/32x32/1e40af/ffffff?text=RA">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -66,13 +63,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center gap-3">
-                    <!-- 
-                      TODO: Ganti atribut src di bawah ini dengan Base64 Logo Anda.
-                      Jika sudah ada, hapus div "RA" di bawahnya dan hapus class "hidden" pada tag img.
-                    -->
-                    <img id="logo-utama" src="https://placehold.co/100x100/1e40af/ffffff?text=Logo" alt="Logo Reuni" class="w-10 h-10 rounded-full object-cover hidden">
+                    <!-- Logo Utama (Hidden by default, dimunculkan via script DB) -->
+                    <img id="logo-utama" src="https://placehold.co/100x100/1e40af/ffffff?text=Logo" alt="Logo Reuni" class="w-10 h-10 rounded-full object-cover hidden shadow-sm border border-slate-100">
                     
-                    <div id="logo-teks" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    <!-- Inisial Teks Logo (Tampil jika belum ada logo dari DB) -->
+                    <div id="logo-teks" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-sm">
                         RA
                     </div>
                     <span class="font-serif font-bold text-xl text-slate-800">Reuni Akbar '26</span>
@@ -130,6 +125,7 @@
         </div>
     </section>
 
+    <!-- Countdown Section -->
     <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 mb-16 fade-in" style="animation-delay: 0.5s;">
         <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 border-b-4 border-accent flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
@@ -158,6 +154,42 @@
         </div>
     </div>
 
+    <section id="tentang" class="py-12 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Tentang Reuni Akbar</h2>
+                    <div class="w-20 h-1 bg-accent mb-8 rounded-full"></div>
+                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
+                        Setelah sekian lama berpisah untuk mengejar mimpi masing-masing, inilah saatnya kita kembali berkumpul. Reuni Akbar ini bukan sekadar ajang temu kangen, melainkan momen apresiasi atas ikatan yang pernah terjalin.
+                    </p>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
+                        Acara akan sangat meriah dengan hadirnya <strong>Bazar UMKM Tradisional</strong>, keseruan <strong>Lomba Permainan Tradisional</strong>, dan puncaknya kita akan dihibur oleh <strong>Konser Musik</strong> yang spektakuler.
+                    </p>
+                    
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 shadow-sm">
+                        <h3 class="font-bold text-slate-800 mb-4 text-xl border-b pb-2">Detail Pelaksanaan</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0"><i class="far fa-calendar-alt text-lg"></i></div>
+                                <div><span class="block font-semibold text-slate-800">Tanggal</span><span class="text-slate-600">Minggu, 30 Agustus 2026</span></div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0"><i class="fas fa-map-marker-alt text-lg"></i></div>
+                                <div><span class="block font-semibold text-slate-800">Tempat</span><span class="text-slate-600">Ruang Terbuka Hijau Pagutan, Mataram</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="absolute inset-0 bg-primary rounded-3xl transform rotate-3 scale-105 opacity-10"></div>
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Suasana Reuni" class="rounded-3xl shadow-2xl relative z-10 w-full h-auto object-cover aspect-[4/3]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kepanitiaan Section dengan SC Grid -->
     <section id="panitia" class="py-24 bg-slate-100 border-t border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -204,6 +236,7 @@
                 </div>
             </div>
 
+            <!-- Panitia Pelaksana List -->
             <div class="max-w-4xl mx-auto fade-in">
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
                     <div class="flex items-center gap-4 mb-6 pb-4 border-b border-slate-100">
@@ -213,19 +246,19 @@
                         <h3 class="text-2xl font-bold text-slate-800">Panitia Pelaksana</h3>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-100">
                             <div class="w-24 font-bold text-slate-400 uppercase tracking-wider text-xs">Ketua</div>
                             <div class="font-medium text-slate-800">H. Andy Hadianto, S.H., M.H., M.M.</div>
                         </div>
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-100">
                             <div class="w-24 font-bold text-slate-400 uppercase tracking-wider text-xs">Sekretaris</div>
                             <div class="font-medium text-slate-800">Joko Waskita</div>
                         </div>
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-100">
                             <div class="w-24 font-bold text-slate-400 uppercase tracking-wider text-xs">Bendahara</div>
                             <div class="font-medium text-slate-800">Sdri. Aming</div>
                         </div>
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-100">
                             <div class="w-24 font-bold text-slate-400 uppercase tracking-wider text-xs">Humas</div>
                             <div class="font-medium text-slate-800">Sdr. Ipit</div>
                         </div>
@@ -235,6 +268,7 @@
         </div>
     </section>
 
+    <!-- Jadwal Acara Sederhana -->
     <section id="jadwal" class="py-24 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -272,6 +306,7 @@
         </div>
     </section>
 
+    <!-- Galeri 25 Foto Section -->
     <section id="galeri" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -279,7 +314,7 @@
                 <div class="w-20 h-1 bg-accent mx-auto mb-6 rounded-full"></div>
             </div>
 
-            <!-- Container Grid -->
+            <!-- Container Grid (Total 25 Foto) -->
             <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-500">
                 
                 <!-- Foto 1-8 (Tampil Default) -->
@@ -292,10 +327,8 @@
                 <div class="group relative overflow-hidden rounded-xl aspect-square cursor-pointer"><img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Galeri" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fas fa-search-plus text-white text-2xl"></i></div></div>
                 <div class="group relative overflow-hidden rounded-xl aspect-square cursor-pointer"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Galeri" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fas fa-search-plus text-white text-2xl"></i></div></div>
 
-                <!-- Foto 9-25 (Disembunyikan Secara Default) -->
-                <!-- Anda bisa mengganti link src ini nantinya -->
+                <!-- Foto 9-25 (Disembunyikan Secara Default dengan JS Injection di bawah) -->
                 <script>
-                    // Generate 17 foto tambahan secara dinamis agar rapi
                     const galleryContainer = document.getElementById('gallery-container');
                     const imgUrls = [
                         "1523240795649-47d6926715d4", "1517486808906-6ca8b3f04846", "1475721027785-9cb9b09f481c",
@@ -305,7 +338,6 @@
                         "1522202176988-66273c2fd55f", "1540317580384-e5d43616b9aa", "1523580846011-d3a5bc25702b",
                         "1543269865-cbf427effbad", "1560250097-0b93528c311a"
                     ];
-                    
                     imgUrls.forEach(url => {
                         galleryContainer.innerHTML += `
                             <div class="hidden-photo hidden group relative overflow-hidden rounded-xl aspect-square cursor-pointer">
@@ -336,7 +368,6 @@
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden fade-in">
                 <div class="grid grid-cols-1 md:grid-cols-5">
                     
-                    <!-- Harga Tiket -->
                     <div class="bg-primary text-white p-8 md:p-10 md:col-span-2 flex flex-col justify-between">
                         <div>
                             <h3 class="text-2xl font-bold mb-2">Tiket Presale</h3>
@@ -346,7 +377,6 @@
                         </div>
                     </div>
 
-                    <!-- Form Pendaftaran -->
                     <div class="p-8 md:p-10 md:col-span-3">
                         <h3 class="text-2xl font-bold text-slate-800 mb-2">Formulir Pendaftaran</h3>
                         <p class="text-slate-500 mb-6 text-sm">Pilih jenis pendaftaran dan isi data Anda.</p>
@@ -367,17 +397,17 @@
 
                         <form id="form-registrasi" class="space-y-5" onsubmit="event.preventDefault(); handleRegistration();">
                             
-                            <!-- BUNGKUSAN FORM INDIVIDU -->
+                            <!-- FORM INDIVIDU -->
                             <div id="form-individu" class="space-y-5 transition-all duration-300 block">
                                 <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap Peserta *</label><input type="text" id="namaLengkap" name="namaLengkap" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah *</label><input type="text" id="asal_sekolah" name="asal_sekolah" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: SMAN 1 Mataram"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah (SD/SMP/SMA/SMK/Kuliah di Mataram) *</label><input type="text" id="asal_sekolah" name="asal_sekolah" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: SMAN 1 Mataram"></div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Tahun Lulus *</label><input type="number" id="tahun_lulus" name="tahun_lulus" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">No Whatsapp *</label><input type="tel" id="no_wa_individu" name="no_wa_individu" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Tahun Kelulusan *</label><input type="number" id="tahun_lulus" name="tahun_lulus" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp / HP Aktif *</label><input type="tel" id="no_wa_individu" name="no_wa_individu" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
                                 </div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Domisili *</label><input type="text" id="domisili" name="domisili" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Domisili Saat Ini *</label><input type="text" id="domisili" name="domisili" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Membawa Pendamping? *</label>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Apakah Membawa Pendamping? *</label>
                                     <select id="pendamping" name="pendamping" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" onchange="checkCompanionValue(this.value)">
                                         <option value="tidak">Tidak, Saya Sendiri</option>
                                         <option value="1">Ya, 1 Orang Pendamping</option>
@@ -390,16 +420,21 @@
                                 </div>
                             </div>
 
-                            <!-- BUNGKUSAN FORM KELOMPOK -->
+                            <!-- FORM KELOMPOK (Disempurnakan sejajar) -->
                             <div id="form-kelompok" class="space-y-5 transition-all duration-300 hidden">
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Perwakilan *</label><input type="text" id="nama_perwakilan" name="nama_perwakilan" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">No Whatsapp Perwakilan *</label><input type="tel" id="no_wa_kelompok" name="no_wa_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah & Angkatan *</label><input type="text" id="sekolah_angkatan" name="sekolah_angkatan" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Jumlah Anggota (Termasuk perwakilan) *</label><input type="number" id="jumlah_anggota" name="jumlah_anggota" min="2" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Daftar Nama & No HP Anggota *</label><textarea id="daftar_nama_anggota" name="daftar_nama_anggota" rows="5" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none resize-none" placeholder="1. Rony - 0812345&#10;2. Faisal - 0893713"></textarea></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Perwakilan Kelompok *</label><input type="text" id="nama_perwakilan" name="nama_perwakilan" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp Perwakilan (Aktif) *</label><input type="tel" id="no_wa_kelompok" name="no_wa_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah *</label><input type="text" id="asal_sekolah_kelompok" name="asal_sekolah_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: SMAN 1 Mataram"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Angkatan Kelompok *</label><input type="number" id="angkatan_kelompok" name="angkatan_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: 2015"></div>
+                                </div>
+                                
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Jumlah Anggota yang Didaftarkan (Termasuk perwakilan) *</label><input type="number" id="jumlah_anggota" name="jumlah_anggota" min="2" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Tuliskan Daftar Nama Anggota Kelompok beserta Nomor HP-nya *</label><textarea id="daftar_nama_anggota" name="daftar_nama_anggota" rows="5" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none resize-none" placeholder="1. Rony - 0812345&#10;2. Faisal - 0893713"></textarea></div>
                             </div>
 
-                            <!-- Bagian Donasi & QRIS -->
+                            <!-- Opsi Donasi & QRIS Container -->
                             <div class="border-t border-slate-200 pt-5 mt-5">
                                 <label class="block text-sm font-bold text-slate-800 mb-2">Apakah Anda ingin berdonasi untuk kesuksesan acara ini?</label>
                                 <select id="opsi_donasi" name="opsi_donasi" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" onchange="toggleQris(this.value)">
@@ -408,17 +443,14 @@
                                 </select>
                             </div>
 
-                            <div id="qris-container" class="hidden bg-slate-50 p-6 rounded-xl border border-slate-200 text-center flex flex-col items-center">
+                            <div id="qris-container" class="hidden bg-slate-50 p-6 rounded-xl border border-slate-200 text-center flex flex-col items-center transition-all">
                                 <h4 class="font-bold text-slate-800 mb-2">Scan QRIS untuk Donasi</h4>
                                 <p class="text-xs text-slate-500 mb-4">Silakan scan kode QR di bawah ini menggunakan aplikasi M-Banking atau E-Wallet Anda.</p>
                                 
-                                <!-- 
-                                  TODO: Ganti atribut src di bawah ini dengan Base64 QRIS Anda.
-                                  Contoh: src="data:image/png;base64,iVBORw0KGgo..." 
-                                -->
+                                <!-- ID dinamis untuk merubah QRIS dari Database Base64 -->
                                 <img id="gambar-qris" src="https://placehold.co/250x250/ffffff/000000?text=QRIS+Placeholder" alt="QRIS Donasi" class="w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-white shadow-md rounded-lg">
                                 
-                                <p class="text-xs text-accent font-medium mt-3">* Bukti donasi dapat diinfokan saat verifikasi WhatsApp.</p>
+                                <p class="text-xs text-accent font-medium mt-3">* Bukti transfer/donasi dilampirkan ke WhatsApp panitia.</p>
                             </div>
 
                             <div class="pt-4">
@@ -434,20 +466,49 @@
         </div>
     </section>
 
+    <footer class="bg-slate-950 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left text-slate-400">
+            <p>&copy; 2026 Panitia Reuni Akbar Lintas Angkatan. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
     <script>
-        // --- LOGIKA GALLERY DROPDOWN ---
+        // --- 1. AMBIL PENGATURAN GAMBAR DARI DATABASE API (Otomatis saat load) ---
+        fetch('api.php?action=get_pengaturan')
+        .then(response => response.json())
+        .then(data => {
+            // Ganti Favicon
+            if (data.favicon && data.favicon !== '') {
+                const faviconTag = document.getElementById('dynamic-favicon');
+                if (faviconTag) faviconTag.href = data.favicon;
+            }
+            // Ganti Logo Navbar
+            if (data.logo_utama && data.logo_utama !== '') {
+                const imgLogo = document.getElementById('logo-utama');
+                const textLogo = document.getElementById('logo-teks');
+                imgLogo.src = data.logo_utama;
+                imgLogo.classList.remove('hidden'); // Munculkan gambar
+                if (textLogo) textLogo.classList.add('hidden'); // Sembunyikan teks "RA"
+            }
+            // Ganti QRIS
+            if (data.qris_donasi && data.qris_donasi !== '') {
+                const imgQris = document.getElementById('gambar-qris');
+                if (imgQris) imgQris.src = data.qris_donasi;
+            }
+        }).catch(err => console.log('Belum terhubung ke backend PHP'));
+
+
+        // --- 2. LOGIKA GALLERY DROPDOWN ---
         function toggleGallery() {
             const hiddenPhotos = document.querySelectorAll('.hidden-photo');
             const btnText = document.getElementById('btn-gallery-text');
             const btnIcon = document.getElementById('btn-gallery-icon');
             
-            // Cek status elemen pertama apakah sedang disembunyikan
             let isHidden = hiddenPhotos[0].classList.contains('hidden');
             
             hiddenPhotos.forEach(photo => {
                 if (isHidden) {
                     photo.classList.remove('hidden');
-                    // Tambahkan sedikit delay animasi agar cantik
                     setTimeout(() => photo.classList.add('fade-in'), 50);
                 } else {
                     photo.classList.add('hidden');
@@ -461,12 +522,11 @@
             } else {
                 btnText.textContent = "Lihat Semua Foto";
                 btnIcon.classList.replace('fa-arrow-up', 'fa-arrow-down');
-                // Scroll kembali ke atas galeri
                 document.getElementById('galeri').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // --- LOGIKA FORM & QRIS ---
+        // --- 3. LOGIKA FORM INDIVIDU / KELOMPOK ---
         function toggleFormType(type) {
             const formIndividu = document.getElementById('form-individu');
             const formKelompok = document.getElementById('form-kelompok');
@@ -505,26 +565,21 @@
             }
         }
         
-        toggleFormType('individu');
+        toggleFormType('individu'); // Inisialisasi awal
 
-        // --- LOGIKA SUBMIT, DATABASE (MOCK) & WHATSAPP ---
+        // --- 4. LOGIKA SUBMIT (KIRIM DB + WHATSAPP) ---
         function handleRegistration() {
             const submitBtn = document.querySelector('button[type="submit"]');
             submitBtn.innerHTML = '<span>Memproses...</span><i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
 
-            // Ambil Tipe
             const tipe = document.querySelector('input[name="tipe_pendaftaran"]:checked').value;
             const donasi = document.getElementById('opsi_donasi').value === 'ya' ? 'Ya, Berdonasi' : 'Tidak';
             
             let message = `*PENDAFTARAN REUNI AKBAR 2026*\n\n`;
             message += `Jenis Pendaftaran : *${tipe.toUpperCase()}*\n`;
 
-            // Data untuk Database (Object/JSON format)
-            let dbData = { 
-                tipe_pendaftaran: tipe,
-                berdonasi: donasi
-            };
+            let dbData = { tipe_pendaftaran: tipe, berdonasi: donasi };
 
             if (tipe === 'individu') {
                 const nama = document.getElementById('namaLengkap').value;
@@ -536,51 +591,37 @@
                 const jmlPendamping = pendamping === 'lainnya' ? document.getElementById('jumlah_custom').value : (pendamping === 'tidak' ? '0' : '1');
 
                 message += `Nama : ${nama}\nAsal Sekolah : ${asal}\nTahun Lulus : ${tahun}\nNo WA : ${wa}\nDomisili : ${domisili}\nJumlah Pendamping : ${jmlPendamping} orang\n`;
-                
-                // Set data DB
                 Object.assign(dbData, { nama, asal, tahun, wa, domisili, jmlPendamping });
             } else {
                 const namaPerwakilan = document.getElementById('nama_perwakilan').value;
                 const waKelompok = document.getElementById('no_wa_kelompok').value;
-                const sekolahAngkatan = document.getElementById('sekolah_angkatan').value;
+                const asalSekolahKelompok = document.getElementById('asal_sekolah_kelompok').value;
+                const angkatanKelompok = document.getElementById('angkatan_kelompok').value;
                 const jumlahAnggota = document.getElementById('jumlah_anggota').value;
                 const daftarNama = document.getElementById('daftar_nama_anggota').value;
 
-                message += `Nama Perwakilan : ${namaPerwakilan}\nNo WA : ${waKelompok}\nSekolah/Angkatan : ${sekolahAngkatan}\nJumlah Anggota : ${jumlahAnggota} orang\n\nDaftar Anggota:\n${daftarNama}\n`;
+                message += `Nama Perwakilan : ${namaPerwakilan}\nNo WA : ${waKelompok}\nAsal Sekolah : ${asalSekolahKelompok}\nAngkatan : ${angkatanKelompok}\nJumlah Anggota : ${jumlahAnggota} orang\n\nDaftar Anggota:\n${daftarNama}\n`;
                 
-                // Set data DB
+                // Gabung kembali Asal Sekolah & Angkatan khusus untuk dikirim ke Backend PHP (sesuai struktur tabel api.php sebelumnya)
+                const sekolahAngkatan = `${asalSekolahKelompok} - Angkatan ${angkatanKelompok}`;
                 Object.assign(dbData, { namaPerwakilan, waKelompok, sekolahAngkatan, jumlahAnggota, daftarNama });
             }
 
-            message += `\nBerdonasi : *${donasi}*\n\n_Mohon instruksi pembayaran tiket selanjutnya._`;
+            message += `\nBerdonasi : *${donasi}*\n\n_Mohon instruksi verifikasi & pembayaran tiket selanjutnya._`;
 
-            // ==========================================
-            // [MOCKUP] SIMPAN KE DATABASE MYSQL (FETCH API)
-            // ==========================================
-            /* 
-               Karena file ini murni HTML, Anda tidak bisa langsung koneksi ke MySQL.
-               Anda perlu mengaktifkan kode fetch() di bawah ini untuk mengirim data ke file PHP di server Anda (misal: proses_daftar.php).
-            */
-            
-            fetch('proses_daftar.php', {
+            // Kirim ke Backend Database (Simultan)
+            fetch('api.php?action=submit_daftar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dbData)
-            }).then(response => response.json())
-              .then(data => console.log('Data tersimpan di DB', data))
-              .catch(error => console.error('Error DB:', error));
+            }).catch(error => console.error('Gagal connect DB:', error));
 
-
-            // ==========================================
-            // MENGIRIM KE WHATSAPP (NOMOR: 082135067070)
-            // ==========================================
+            // Kirim ke WhatsApp (Nomor Tujuan Sesuai Request)
             const nomorTujuan = "6282135067070";
             const waUrl = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(message)}`;
-            
-            // Buka WhatsApp di tab baru
             window.open(waUrl, '_blank');
 
-            // Reset Button
+            // Reset tombol dan form
             setTimeout(() => {
                 submitBtn.innerHTML = '<span>Kirim & Lanjutkan ke WhatsApp</span><i class="fab fa-whatsapp text-lg"></i>';
                 submitBtn.disabled = false;
@@ -588,6 +629,29 @@
                 toggleQris('tidak');
             }, 2000);
         }
+
+        // --- 5. OBSERVER UNTUK ANIMASI SCROLL ---
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el, index) => {
+            if(index > 0) {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            }
+        });
+        
+        // Logika Mobile Navbar
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
     </script>
 </body>
 </html>
