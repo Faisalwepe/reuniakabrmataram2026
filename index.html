@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rindu Mataram | Reuni Akbar Pelajar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Konfigurasi Palet Warna Kustom -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        mataram: {
+                            darkred: '#4A0E17',   /* Merah Gelap */
+                            red: '#B93D44',       /* Merah Bata */
+                            cream: '#EAE0B7',     /* Krem / Beige */
+                            sage: '#899974',      /* Hijau Sage */
+                            darkgreen: '#547A5F'  /* Hijau Gelap */
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EAE0B7; /* Warna dasar Krem */
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #EAE0B7; }
+        ::-webkit-scrollbar-thumb { background: #899974; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #547A5F; }
+
+        /* Form Card Active State */
+        .type-card { transition: all 0.3s ease; }
+        input[type="radio"]:checked + .type-card {
+            border-color: #547A5F;
+            background-color: rgba(137, 153, 116, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        input[type="radio"]:checked + .type-card .icon-container {
+            background-color: #547A5F;
+            color: #EAE0B7;
+        }
+        input[type="radio"]:checked + .type-card .check-icon {
+            opacity: 1; transform: scale(1);
+        }
+        
+        /* Smooth reveal for sections */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-mataram-darkred antialiased">
+
+    <!-- Header / Navigasi -->
+    <nav class="fixed w-full z-50 bg-mataram-darkred/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-mataram-cream rounded-full flex items-center justify-center text-mataram-darkred font-bold text-xl shadow-inner">
+                        RM
+                    </div>
+                    <span class="text-mataram-cream font-bold text-xl tracking-wider">RINDU MATARAM</span>
+                </div>
+                <div>
+                    <a href="#pendaftaran" class="bg-mataram-red hover:bg-red-600 text-mataram-cream px-6 py-2 rounded-full font-semibold transition shadow-lg transform hover:-translate-y-1">
+                        Daftar Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Suasana Reuni" class="w-full h-full object-cover">
+            <!-- Gradient Overlay menggunakan warna palette -->
+            <div class="absolute inset-0 bg-gradient-to-r from-mataram-darkred/90 to-mataram-darkgreen/80 mix-blend-multiply"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto animate-fade-in-up">
+            <div class="inline-block bg-mataram-sage/30 backdrop-blur-md border border-mataram-sage/50 text-mataram-cream px-4 py-1.5 rounded-full text-sm font-semibold mb-6 tracking-widest uppercase">
+                Acara Silaturahmi Terbesar
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-mataram-cream mb-4 drop-shadow-lg">
+                Reuni Akbar <span class="text-mataram-red">Pelajar</span><br>Kota Mataram
+            </h1>
+            <p class="text-xl md:text-2xl text-mataram-cream/90 mb-10 font-light max-w-3xl mx-auto">
+                Membangkitkan memori lama, merajut kembali kisah di bangku sekolah. Mari berkumpul, bersenda gurau, dan berbagi kebahagiaan.
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="flex justify-center gap-3 md:gap-6 mb-12">
+                <div class="bg-mataram-cream/10 backdrop-blur-md rounded-2xl p-4 w-20 md:w-28 border border-mataram-cream/20 shadow-xl">
+                    <span id="days" class="block text-3xl md:text-5xl font-bold text-mataram-cream">00</span>
+                    <span class="text-xs md:text-sm text-mataram-cream/80 uppercase tracking-wide">Hari</span>
+                </div>
+                <div class="bg-mataram-cream/10 backdrop-blur-md rounded-2xl p-4 w-20 md:w-28 border border-mataram-cream/20 shadow-xl">
+                    <span id="hours" class="block text-3xl md:text-5xl font-bold text-mataram-cream">00</span>
+                    <span class="text-xs md:text-sm text-mataram-cream/80 uppercase tracking-wide">Jam</span>
+                </div>
+                <div class="bg-mataram-cream/10 backdrop-blur-md rounded-2xl p-4 w-20 md:w-28 border border-mataram-cream/20 shadow-xl">
+                    <span id="minutes" class="block text-3xl md:text-5xl font-bold text-mataram-cream">00</span>
+                    <span class="text-xs md:text-sm text-mataram-cream/80 uppercase tracking-wide">Menit</span>
+                </div>
+                <div class="bg-mataram-cream/10 backdrop-blur-md rounded-2xl p-4 w-20 md:w-28 border border-mataram-cream/20 shadow-xl">
+                    <span id="seconds" class="block text-3xl md:text-5xl font-bold text-mataram-red">00</span>
+                    <span class="text-xs md:text-sm text-mataram-cream/80 uppercase tracking-wide">Detik</span>
+                </div>
+            </div>
+
+            <a href="#info" class="animate-bounce inline-block text-mataram-cream bg-mataram-darkgreen/40 p-4 rounded-full backdrop-blur-sm border border-mataram-cream/20 hover:bg-mataram-darkgreen transition">
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </div>
+        
+        <!-- Shape Divider -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" class="w-full h-auto fill-current text-mataram-cream"><path d="M0,96L80,85.3C160,75,320,53,480,42.7C640,32,800,32,960,42.7C1120,53,1280,75,1360,85.3L1440,96L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path></svg>
+        </div>
+    </div>
+
+    <!-- Info Acara & Donasi -->
+    <section id="info" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-mataram-darkred mb-4">Detail Kegiatan</h2>
+            <div class="w-24 h-1 bg-mataram-red mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Galeri Mini -->
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1523580494112-071d289052b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="School" class="rounded-2xl shadow-lg transform -rotate-2 hover:rotate-0 transition duration-300">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Friends" class="rounded-2xl shadow-lg transform translate-y-8 rotate-2 hover:rotate-0 transition duration-300">
+            </div>
+
+            <!-- Kartu Info -->
+            <div class="space-y-6">
+                <div class="bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-mataram-sage/30 shadow-md flex items-start space-x-5 hover:bg-white transition">
+                    <div class="bg-mataram-darkgreen text-mataram-cream w-14 h-14 rounded-full flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-mataram-darkred">Waktu Pelaksanaan</h3>
+                        <p class="text-mataram-darkgreen font-semibold mt-1">Minggu, 23 Agustus 2026</p>
+                        <p class="text-sm text-mataram-darkred/70 mt-1">Mulai pukul 07:00 WITA hingga selesai.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-mataram-sage/30 shadow-md flex items-start space-x-5 hover:bg-white transition">
+                    <div class="bg-mataram-red text-mataram-cream w-14 h-14 rounded-full flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-mataram-darkred">Lokasi Acara</h3>
+                        <p class="text-mataram-darkgreen font-semibold mt-1">Ruang Terbuka Hijau (RTH) Pagutan</p>
+                        <p class="text-sm text-mataram-darkred/70 mt-1">Mataram, Nusa Tenggara Barat.</p>
+                    </div>
+                </div>
+
+                <!-- Banner Donasi -->
+                <div class="bg-gradient-to-br from-mataram-darkgreen to-mataram-sage p-6 rounded-2xl shadow-xl text-mataram-cream relative overflow-hidden mt-8">
+                    <i class="fa-solid fa-hand-holding-heart absolute -right-4 -bottom-4 text-9xl opacity-20 text-white"></i>
+                    <div class="relative z-10">
+                        <span class="bg-mataram-red text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm mb-3 inline-block">Gratis & Charity</span>
+                        <h3 class="text-2xl font-bold mb-2">Program Donasi Sosial</h3>
+                        <p class="text-sm opacity-90 mb-4 line-clamp-2">Acara ini tidak dipungut biaya masuk. Dana yang terkumpul dari donasi sukarela akan disalurkan untuk:</p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <div class="bg-mataram-darkred/30 rounded-lg p-3 flex-1 backdrop-blur-sm border border-white/10">
+                                <i class="fa-solid fa-graduation-cap text-mataram-cream mb-1"></i>
+                                <div class="font-bold text-lg">70%</div>
+                                <div class="text-xs">Beasiswa Pendidikan</div>
+                            </div>
+                            <div class="bg-mataram-darkred/30 rounded-lg p-3 flex-1 backdrop-blur-sm border border-white/10">
+                                <i class="fa-solid fa-champagne-glasses text-mataram-cream mb-1"></i>
+                                <div class="font-bold text-lg">30%</div>
+                                <div class="text-xs">Operasional Acara</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulir Section -->
+    <section id="pendaftaran" class="py-20 bg-white relative reveal">
+        <!-- Dekorasi Atas Bawah -->
+        <svg class="absolute top-0 w-full text-mataram-cream h-12" preserveAspectRatio="none" viewBox="0 0 1440 48"><path fill="currentColor" d="M0,0C480,48 960,48 1440,0L1440,48L0,48Z"></path></svg>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-mataram-darkred mb-4">Formulir Konfirmasi Kehadiran</h2>
+                <p class="text-mataram-darkgreen">Pilih jenis pendaftaran Anda dan isi data dengan benar.</p>
+            </div>
+
+            <form id="reuniForm" onsubmit="event.preventDefault(); submitForm();" class="bg-mataram-cream/30 p-6 md:p-10 rounded-3xl border border-mataram-sage/30 shadow-2xl relative">
+                
+                <!-- Step 1: Pilih Tipe -->
+                <div class="mb-10" id="step1">
+                    <h3 class="text-lg font-bold text-mataram-darkred mb-5 flex items-center border-b border-mataram-sage/40 pb-3">
+                        <span class="bg-mataram-red text-mataram-cream w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm shadow">1</span>
+                        Metode Pendaftaran
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="jenisDaftar" value="individu" class="peer sr-only" required onclick="toggleForms()">
+                            <div class="type-card h-full bg-white border-2 border-mataram-cream rounded-2xl p-6 flex flex-col items-center text-center hover:border-mataram-sage">
+                                <div class="icon-container w-16 h-16 bg-mataram-cream text-mataram-darkgreen rounded-full flex items-center justify-center text-2xl mb-4 transition-colors">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <h4 class="font-bold text-mataram-darkred text-xl mb-2">Individu (Mandiri)</h4>
+                                <p class="text-sm text-mataram-darkred/70">Daftar untuk diri sendiri, lebih cepat dan praktis.</p>
+                                <div class="check-icon absolute top-4 right-4 w-8 h-8 bg-mataram-darkgreen text-mataram-cream rounded-full flex items-center justify-center opacity-0 scale-50 transition-all shadow-md">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="jenisDaftar" value="kelompok" class="peer sr-only" onclick="toggleForms()">
+                            <div class="type-card h-full bg-white border-2 border-mataram-cream rounded-2xl p-6 flex flex-col items-center text-center hover:border-mataram-sage">
+                                <div class="icon-container w-16 h-16 bg-mataram-cream text-mataram-darkgreen rounded-full flex items-center justify-center text-2xl mb-4 transition-colors">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <h4 class="font-bold text-mataram-darkred text-xl mb-2">Kelompok / Kolektif</h4>
+                                <p class="text-sm text-mataram-darkred/70">Daftarkan beberapa teman sekaligus dalam satu rombongan.</p>
+                                <div class="check-icon absolute top-4 right-4 w-8 h-8 bg-mataram-darkgreen text-mataram-cream rounded-full flex items-center justify-center opacity-0 scale-50 transition-all shadow-md">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 2: Form Individu -->
+                <div id="formIndividu" class="hidden space-y-6 animate-fade-in-up transition-all">
+                    <h3 class="text-lg font-bold text-mataram-darkred mb-5 flex items-center border-b border-mataram-sage/40 pb-3">
+                        <span class="bg-mataram-darkgreen text-mataram-cream w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm shadow">2</span>
+                        Data Diri Peserta
+                    </h3>
+                    
+                    <div class="bg-white rounded-2xl p-6 md:p-8 space-y-6 shadow-sm border border-mataram-sage/20">
+                        <div>
+                            <label class="block text-sm font-semibold text-mataram-darkred mb-2">Nama Lengkap Peserta <span class="text-mataram-red">*</span></label>
+                            <input type="text" id="ind_nama" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5 transition" placeholder="Jawaban Anda">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Asal Sekolah <span class="text-mataram-red">*</span></label>
+                                <p class="text-xs text-mataram-darkred/60 mb-2">(SD/SMP/SMA/SMK/Kuliah di Mataram)</p>
+                                <input type="text" id="ind_sekolah" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Contoh: SMAN 1 Mataram">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Tahun Kelulusan <span class="text-mataram-red">*</span></label>
+                                <p class="text-xs text-mataram-darkred/60 mb-2">Angkatan Kelulusan</p>
+                                <input type="number" id="ind_tahun" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Contoh: 2015">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Nomor WhatsApp / HP Aktif <span class="text-mataram-red">*</span></label>
+                                <input type="tel" id="ind_wa" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Jawaban Anda">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Domisili Saat Ini <span class="text-mataram-red">*</span></label>
+                                <input type="text" id="ind_domisili" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Contoh: Mataram">
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-mataram-sage/30">
+                            <label class="block text-sm font-semibold text-mataram-darkred mb-3">Apakah Membawa Pendamping? <span class="text-mataram-red">*</span></label>
+                            <p class="text-xs text-mataram-darkred/60 mb-4">Jika membawa lebih dari 1 orang harap pilih opsi 'Yang lain'.</p>
+                            
+                            <div class="space-y-3">
+                                <label class="flex items-center p-3 bg-mataram-cream/20 border border-mataram-sage/30 rounded-xl cursor-pointer hover:bg-mataram-cream/40 transition">
+                                    <input type="radio" name="ind_pendamping" value="Tidak" class="w-5 h-5 text-mataram-darkgreen focus:ring-mataram-darkgreen">
+                                    <span class="ml-3 text-mataram-darkred font-medium">Tidak</span>
+                                </label>
+                                <label class="flex items-center p-3 bg-mataram-cream/20 border border-mataram-sage/30 rounded-xl cursor-pointer hover:bg-mataram-cream/40 transition">
+                                    <input type="radio" name="ind_pendamping" value="1 orang" class="w-5 h-5 text-mataram-darkgreen focus:ring-mataram-darkgreen">
+                                    <span class="ml-3 text-mataram-darkred font-medium">Ya, Membawa 1 orang</span>
+                                </label>
+                                <label class="flex items-center p-3 bg-mataram-cream/20 border border-mataram-sage/30 rounded-xl cursor-pointer hover:bg-mataram-cream/40 transition">
+                                    <input type="radio" name="ind_pendamping" value="lainnya" class="w-5 h-5 text-mataram-darkgreen focus:ring-mataram-darkgreen" onclick="document.getElementById('ind_pendamping_lain').focus()">
+                                    <span class="ml-3 mr-3 text-mataram-darkred font-medium whitespace-nowrap">Yang lain:</span>
+                                    <input type="text" id="ind_pendamping_lain" class="border-b-2 border-mataram-sage/50 bg-transparent focus:outline-none focus:border-mataram-darkgreen w-full pb-1 text-mataram-darkred" placeholder="Ketik jumlah..." onclick="document.querySelector('input[name=ind_pendamping][value=lainnya]').checked = true">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Form Kelompok -->
+                <div id="formKelompok" class="hidden space-y-6 animate-fade-in-up transition-all">
+                    <h3 class="text-lg font-bold text-mataram-darkred mb-5 flex items-center border-b border-mataram-sage/40 pb-3">
+                        <span class="bg-mataram-darkgreen text-mataram-cream w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm shadow">2</span>
+                        Data Perwakilan & Rombongan
+                    </h3>
+                    
+                    <div class="bg-white rounded-2xl p-6 md:p-8 space-y-6 shadow-sm border border-mataram-sage/20">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Nama Perwakilan Kelompok <span class="text-mataram-red">*</span></label>
+                                <input type="text" id="kel_nama" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Jawaban Anda">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Nomor Whatsapp Perwakilan (Aktif) <span class="text-mataram-red">*</span></label>
+                                <input type="tel" id="kel_wa" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Jawaban Anda">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Asal Sekolah & Angkatan Kelompok <span class="text-mataram-red">*</span></label>
+                                <input type="text" id="kel_sekolah" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Contoh: SMAN 1 Mataram Angkatan 2015">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-mataram-darkred mb-2">Jumlah Anggota yang Didaftarkan <span class="text-mataram-red">*</span></label>
+                                <p class="text-xs text-mataram-darkred/60 mb-2">(Termasuk Perwakilan) Ketik angka saja</p>
+                                <input type="number" id="kel_jumlah" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-3.5" placeholder="Jawaban Anda">
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <label class="block text-sm font-semibold text-mataram-darkred mb-2">Tuliskan Daftar Nama Anggota Kelompok beserta Nomor HP-nya <span class="text-mataram-red">*</span></label>
+                            <textarea id="kel_daftar" rows="5" class="w-full bg-mataram-cream/20 border border-mataram-sage/50 text-mataram-darkred rounded-xl focus:ring-mataram-darkgreen focus:border-mataram-darkgreen block p-4 resize-none" placeholder="Contoh:&#10;1. Rony - 0812345&#10;2. Faisal - 0893713&#10;dst..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div id="submitContainer" class="hidden mt-10">
+                    <button type="submit" class="w-full bg-mataram-darkred hover:bg-mataram-red text-mataram-cream font-bold text-xl py-5 px-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center">
+                        <i class="fa-regular fa-paper-plane mr-3 text-2xl"></i> KIRIM DATA PENDAFTARAN
+                    </button>
+                    <p class="text-center text-xs text-mataram-darkgreen mt-5 flex justify-center items-center">
+                        <i class="fa-solid fa-shield-halved mr-2"></i> Data Anda dienkripsi dan aman.
+                    </p>
+                </div>
+                
+                <!-- Sukses State -->
+                <div id="successMessage" class="hidden mt-4 bg-white border-2 border-mataram-sage rounded-3xl p-10 text-center animate-fade-in-up">
+                    <div class="w-24 h-24 bg-mataram-cream text-mataram-darkgreen rounded-full flex items-center justify-center mx-auto mb-6 text-5xl shadow-inner">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <h3 class="text-3xl font-extrabold text-mataram-darkred mb-3">Pendaftaran Berhasil!</h3>
+                    <p class="text-mataram-darkred/80 mb-8 max-w-md mx-auto text-lg">
+                        Terima kasih! Data Anda telah masuk ke sistem kami. Simpan tanggalnya dan sampai jumpa di Reuni Akbar Rindu Mataram.
+                    </p>
+                    <button type="button" onclick="location.reload()" class="bg-mataram-sage hover:bg-mataram-darkgreen text-white font-bold py-3 px-8 rounded-full transition shadow-lg">
+                        Kembali ke Awal
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        
+        <!-- Shape Divider Bottom -->
+        <svg class="absolute bottom-0 w-full text-mataram-darkred h-12" preserveAspectRatio="none" viewBox="0 0 1440 48"><path fill="currentColor" d="M0,48C480,0 960,0 1440,48L1440,48L0,48Z"></path></svg>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-mataram-darkred text-mataram-cream py-10 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="w-16 h-16 bg-mataram-cream/10 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-2">Panitia Rindu Mataram 2026</h2>
+            <p class="text-mataram-cream/60 mb-6 text-sm">Untuk informasi lebih lanjut hubungi CP: 0812-3456-7890 (Budi)</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mataram-red transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mataram-red transition"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <p class="text-xs text-white/30 mt-8">&copy; 2026 Reuni Akbar Pelajar Kota Mataram. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Logika Tampil/Sembunyi Form
+        function toggleForms() {
+            const jenis = document.querySelector('input[name="jenisDaftar"]:checked').value;
+            const formInd = document.getElementById('formIndividu');
+            const formKel = document.getElementById('formKelompok');
+            const submitBtn = document.getElementById('submitContainer');
+            
+            if (jenis === 'individu') {
+                formInd.classList.remove('hidden');
+                formKel.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                setRequired(formInd, true);
+                setRequired(formKel, false);
+            } else if (jenis === 'kelompok') {
+                formInd.classList.add('hidden');
+                formKel.classList.remove('hidden');
+                submitBtn.classList.remove('hidden');
+                setRequired(formInd, false);
+                setRequired(formKel, true);
+            }
+        }
+
+        function setRequired(container, isRequired) {
+            const inputs = container.querySelectorAll('input:not([type="radio"]), select, textarea');
+            inputs.forEach(input => {
+                if(input.id !== 'ind_pendamping_lain') {
+                    if (isRequired) input.setAttribute('required', 'required');
+                    else input.removeAttribute('required');
+                }
+            });
+            if(container.id === 'formIndividu') {
+                const radios = container.querySelectorAll('input[type="radio"]');
+                if (isRequired) radios[0].setAttribute('required', 'required');
+                else radios[0].removeAttribute('required');
+            }
+        }
+
+        // Submit Animasi
+        function submitForm() {
+            const form = document.getElementById('reuniForm');
+            if (form.checkValidity()) {
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('formIndividu').classList.add('hidden');
+                document.getElementById('formKelompok').classList.add('hidden');
+                document.getElementById('submitContainer').classList.add('hidden');
+                
+                document.getElementById('successMessage').classList.remove('hidden');
+                form.reset();
+                window.scrollTo({ top: document.getElementById('pendaftaran').offsetTop - 50, behavior: 'smooth' });
+            }
+        }
+
+        // Script Countdown Timer
+        const countDownDate = new Date("Aug 23, 2026 07:00:00").getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const
