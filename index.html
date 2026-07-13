@@ -55,6 +55,16 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Animasi khusus untuk foto bertumpuk di hero */
+        .float-anim-1 { animation: float 6s ease-in-out infinite; }
+        .float-anim-2 { animation: float 7s ease-in-out infinite alternate-reverse; }
+        .float-anim-3 { animation: float 8s ease-in-out infinite alternate; }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(var(--tw-rotate)); }
+            50% { transform: translateY(-10px) rotate(var(--tw-rotate)); }
+            100% { transform: translateY(0px) rotate(var(--tw-rotate)); }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
@@ -103,9 +113,11 @@
     </nav>
 
     <section id="beranda" class="relative hero-bg min-h-screen flex items-center pt-24 pb-32 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-slate-950/95 via-slate-900/80 to-slate-900/40 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/50 z-0"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <!-- Teks Hero -->
                 <div class="fade-in text-center lg:text-left pt-10 lg:pt-0">
                     <span class="text-accent font-semibold tracking-wider uppercase text-sm md:text-base mb-4 block">Merajut Kisah, Mengulang Memori</span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
@@ -121,16 +133,39 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Komposisi Foto 3 Tumpuk (Sekarang muncul di mobile & desktop) -->
+                <div class="fade-in relative h-[350px] sm:h-[450px] lg:h-[500px] w-full mx-auto max-w-[500px] lg:max-w-none mt-8 lg:mt-0" style="animation-delay: 0.3s;">
+                    <!-- Foto 1 (Kiri Atas / Belakang) -->
+                    <div class="absolute top-0 left-0 sm:left-4 w-40 sm:w-64 h-40 sm:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-6 float-anim-1 hover:z-40 hover:scale-110 transition-all duration-300 z-10">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Momen Bersama">
+                    </div>
+                    
+                    <!-- Foto 2 (Kanan Atas / Tengah) -->
+                    <div class="absolute top-10 right-0 sm:right-4 w-48 sm:w-72 h-32 sm:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform rotate-3 float-anim-2 hover:z-40 hover:scale-110 transition-all duration-300 z-20">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Kumpul Angkatan">
+                    </div>
+                    
+                    <!-- Foto 3 (Bawah Tengah / Paling Depan) -->
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-56 sm:w-80 h-40 sm:h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-2 float-anim-3 hover:z-40 hover:scale-110 transition-all duration-300 z-30">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Persahabatan">
+                        
+                        <!-- Badge -->
+                        <div class="absolute -bottom-2 -right-2 bg-accent text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border-2 border-white">
+                            Kenangan Kita
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Countdown Section -->
+    <!-- Countdown Section (Hitung Mundur) -->
     <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 mb-16 fade-in" style="animation-delay: 0.5s;">
         <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 border-b-4 border-accent flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
                 <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Menuju Hari H Reuni</h2>
-                <p class="text-slate-500 font-medium mt-2">Persiapkan dirimu untuk momen bersejarah ini</p>
+                <p class="text-slate-500 font-medium mt-2">Persiapkan dirimu untuk momen bersejarah ini!</p>
             </div>
             
             <div class="flex gap-2 md:gap-4 text-center" id="countdown-container">
@@ -154,6 +189,7 @@
         </div>
     </div>
 
+    <!-- Sekilas Tentang Acara -->
     <section id="tentang" class="py-12 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -172,11 +208,19 @@
                         <ul class="space-y-4">
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0"><i class="far fa-calendar-alt text-lg"></i></div>
-                                <div><span class="block font-semibold text-slate-800">Tanggal</span><span class="text-slate-600">Minggu, 30 Agustus 2026</span></div>
+                                <div><span class="block font-semibold text-slate-800">Waktu Pelaksanaan</span><span class="text-slate-600">Minggu, 30 Agustus 2026</span></div>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0"><i class="fas fa-map-marker-alt text-lg"></i></div>
-                                <div><span class="block font-semibold text-slate-800">Tempat</span><span class="text-slate-600">Ruang Terbuka Hijau Pagutan, Mataram</span></div>
+                                <div><span class="block font-semibold text-slate-800">Lokasi Acara</span><span class="text-slate-600">Ruang Terbuka Hijau Pagutan, Mataram</span></div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0"><i class="fas fa-building text-lg"></i></div>
+                                <div><span class="block font-semibold text-slate-800">Sekretariat Panitia</span><span class="text-slate-600">Kopi Hotel Kotaraja, Mataram</span></div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0"><i class="fab fa-whatsapp text-lg"></i></div>
+                                <div><span class="block font-semibold text-slate-800">Narahubung</span><span class="text-slate-600">Joko Waskito (0823-5944-4679)</span></div>
                             </li>
                         </ul>
                     </div>
@@ -189,7 +233,7 @@
         </div>
     </section>
 
-    <!-- Kepanitiaan Section dengan SC Grid -->
+    <!-- Kepanitiaan Section -->
     <section id="panitia" class="py-24 bg-slate-100 border-t border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -420,7 +464,7 @@
                                 </div>
                             </div>
 
-                            <!-- FORM KELOMPOK (Disempurnakan sejajar) -->
+                            <!-- FORM KELOMPOK -->
                             <div id="form-kelompok" class="space-y-5 transition-all duration-300 hidden">
                                 <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Perwakilan Kelompok *</label><input type="text" id="nama_perwakilan" name="nama_perwakilan" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
                                 <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp Perwakilan (Aktif) *</label><input type="tel" id="no_wa_kelompok" name="no_wa_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
@@ -476,215 +520,49 @@
     </section>
 
     <footer class="bg-slate-950 pt-16 pb-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">RA</div>
+                        <span class="font-serif font-bold text-lg text-white">Reuni Akbar '26</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Momen apresiasi atas ikatan yang pernah terjalin. Merajut kisah, mengulang memori.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 border-b border-slate-800 pb-2">Informasi Acara</h4>
+                    <ul class="text-slate-400 text-sm space-y-2">
+                        <li><i class="far fa-calendar-alt w-5"></i> 30 Agustus 2026</li>
+                        <li><i class="fas fa-map-marker-alt w-5"></i> RTH Pagutan, Mataram</li>
+                        <li><i class="fas fa-building w-5"></i> Sekretariat: Kopi Hotel Kotaraja</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 border-b border-slate-800 pb-2">Kontak Kami</h4>
+                    <ul class="text-slate-400 text-sm space-y-2">
+                        <li><i class="fas fa-user w-5"></i> Joko Waskito</li>
+                        <li><i class="fab fa-whatsapp w-5"></i> 0823-5944-4679</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm border-t border-slate-800 pt-8">
             <p>&copy; 2026 Panitia Reuni Akbar Lintas Angkatan. Hak Cipta Dilindungi.</p>
         </div>
     </footer>
 
     <script>
-        // --- 1. AMBIL PENGATURAN GAMBAR DARI DATABASE API (Otomatis saat load) ---
-        fetch('api.php?action=get_pengaturan')
-        .then(response => response.json())
-        .then(data => {
-            // Ganti Favicon
-            if (data.favicon && data.favicon !== '') {
-                const faviconTag = document.getElementById('dynamic-favicon');
-                if (faviconTag) faviconTag.href = data.favicon;
+        // --- 1. SCRIPT COUNTDOWN (Hitung Mundur) ---
+        const targetDate = new Date('2026-08-30T08:00:00').getTime();
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown-container').innerHTML = '<div class="text-xl md:text-2xl font-bold text-red-500 w-full text-center py-2 fade-in">🎉 ACARA TELAH DIMULAI! 🎉</div>';
+                return;
             }
-            // Ganti Logo Navbar
-            if (data.logo_utama && data.logo_utama !== '') {
-                const imgLogo = document.getElementById('logo-utama');
-                const textLogo = document.getElementById('logo-teks');
-                imgLogo.src = data.logo_utama;
-                imgLogo.classList.remove('hidden'); // Munculkan gambar
-                if (textLogo) textLogo.classList.add('hidden'); // Sembunyikan teks "RA"
-            }
-            // Ganti QRIS
-            if (data.qris_donasi && data.qris_donasi !== '') {
-                const imgQris = document.getElementById('gambar-qris');
-                if (imgQris) imgQris.src = data.qris_donasi;
-            }
-        }).catch(err => console.log('Belum terhubung ke backend PHP'));
-
-
-        // --- 2. LOGIKA GALLERY DROPDOWN ---
-        function toggleGallery() {
-            const hiddenPhotos = document.querySelectorAll('.hidden-photo');
-            const btnText = document.getElementById('btn-gallery-text');
-            const btnIcon = document.getElementById('btn-gallery-icon');
-            
-            let isHidden = hiddenPhotos[0].classList.contains('hidden');
-            
-            hiddenPhotos.forEach(photo => {
-                if (isHidden) {
-                    photo.classList.remove('hidden');
-                    setTimeout(() => photo.classList.add('fade-in'), 50);
-                } else {
-                    photo.classList.add('hidden');
-                    photo.classList.remove('fade-in');
-                }
-            });
-
-            if (isHidden) {
-                btnText.textContent = "Sembunyikan Foto";
-                btnIcon.classList.replace('fa-arrow-down', 'fa-arrow-up');
-            } else {
-                btnText.textContent = "Lihat Semua Foto";
-                btnIcon.classList.replace('fa-arrow-up', 'fa-arrow-down');
-                document.getElementById('galeri').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // --- 3. LOGIKA FORM INDIVIDU / KELOMPOK ---
-        function toggleFormType(type) {
-            const formIndividu = document.getElementById('form-individu');
-            const formKelompok = document.getElementById('form-kelompok');
-            const inputsIndividu = formIndividu.querySelectorAll('input, select');
-            const inputsKelompok = formKelompok.querySelectorAll('input, textarea');
-
-            if (type === 'individu') {
-                formIndividu.classList.remove('hidden'); formIndividu.classList.add('block');
-                formKelompok.classList.add('hidden'); formKelompok.classList.remove('block');
-                inputsIndividu.forEach(el => { if(el.id !== 'jumlah_custom') el.setAttribute('required', 'true') });
-                inputsKelompok.forEach(el => el.removeAttribute('required'));
-            } else {
-                formKelompok.classList.remove('hidden'); formKelompok.classList.add('block');
-                formIndividu.classList.add('hidden'); formIndividu.classList.remove('block');
-                inputsKelompok.forEach(el => el.setAttribute('required', 'true'));
-                inputsIndividu.forEach(el => el.removeAttribute('required'));
-            }
-        }
-
-        function checkCompanionValue(value) {
-            const customInputDiv = document.getElementById('jumlah_pendamping_lainnya');
-            const customInput = document.getElementById('jumlah_custom');
-            if (value === 'lainnya') {
-                customInputDiv.classList.remove('hidden'); customInput.setAttribute('required', 'true');
-            } else {
-                customInputDiv.classList.add('hidden'); customInput.removeAttribute('required'); customInput.value = '';
-            }
-        }
-
-        function toggleQris(value) {
-            const qrisContainer = document.getElementById('qris-container');
-            if (value === 'ya') {
-                qrisContainer.classList.remove('hidden');
-            } else {
-                qrisContainer.classList.add('hidden');
-                document.getElementById('nominal_donasi').value = '';
-            }
-        }
-        
-        toggleFormType('individu'); // Inisialisasi awal
-
-        // Format Input Rupiah
-        function formatRupiahInput(angka) {
-            var number_string = angka.value.replace(/[^,\d]/g, '').toString(),
-            split   = number_string.split(','),
-            sisa    = split[0].length % 3,
-            rupiah  = split[0].substr(0, sisa),
-            ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
-
-            if(ribuan){
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            angka.value = rupiah;
-        }
-
-        // --- 4. LOGIKA SUBMIT (KIRIM DB + WHATSAPP) ---
-        function handleRegistration() {
-            const submitBtn = document.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<span>Memproses...</span><i class="fas fa-spinner fa-spin"></i>';
-            submitBtn.disabled = true;
-
-            const tipe = document.querySelector('input[name="tipe_pendaftaran"]:checked').value;
-            const berdonasiRaw = document.getElementById('opsi_donasi').value;
-            const donasi = berdonasiRaw === 'ya' ? 'Ya, Berdonasi' : 'Tidak';
-            const nominalDonasi = document.getElementById('nominal_donasi').value;
-            
-            let message = `*PENDAFTARAN REUNI AKBAR 2026*\n\n`;
-            message += `Jenis Pendaftaran : *${tipe.toUpperCase()}*\n`;
-
-            let dbData = { tipe_pendaftaran: tipe, berdonasi: donasi, nominalDonasi: nominalDonasi };
-
-            if (tipe === 'individu') {
-                const nama = document.getElementById('namaLengkap').value;
-                const asal = document.getElementById('asal_sekolah').value;
-                const tahun = document.getElementById('tahun_lulus').value;
-                const wa = document.getElementById('no_wa_individu').value;
-                const domisili = document.getElementById('domisili').value;
-                const pendamping = document.getElementById('pendamping').value;
-                const jmlPendamping = pendamping === 'lainnya' ? document.getElementById('jumlah_custom').value : (pendamping === 'tidak' ? '0' : '1');
-
-                message += `Nama : ${nama}\nAsal Sekolah : ${asal}\nTahun Lulus : ${tahun}\nNo WA : ${wa}\nDomisili : ${domisili}\nJumlah Pendamping : ${jmlPendamping} orang\n`;
-                Object.assign(dbData, { nama, asal, tahun, wa, domisili, jmlPendamping });
-            } else {
-                const namaPerwakilan = document.getElementById('nama_perwakilan').value;
-                const waKelompok = document.getElementById('no_wa_kelompok').value;
-                const asalSekolahKelompok = document.getElementById('asal_sekolah_kelompok').value;
-                const angkatanKelompok = document.getElementById('angkatan_kelompok').value;
-                const jumlahAnggota = document.getElementById('jumlah_anggota').value;
-                const daftarNama = document.getElementById('daftar_nama_anggota').value;
-
-                message += `Nama Perwakilan : ${namaPerwakilan}\nNo WA : ${waKelompok}\nAsal Sekolah : ${asalSekolahKelompok}\nAngkatan : ${angkatanKelompok}\nJumlah Anggota : ${jumlahAnggota} orang\n\nDaftar Anggota:\n${daftarNama}\n`;
-                
-                // Gabung kembali Asal Sekolah & Angkatan khusus untuk dikirim ke Backend PHP (sesuai struktur tabel api.php sebelumnya)
-                const sekolahAngkatan = `${asalSekolahKelompok} - Angkatan ${angkatanKelompok}`;
-                Object.assign(dbData, { namaPerwakilan, waKelompok, sekolahAngkatan, jumlahAnggota, daftarNama });
-            }
-
-            message += `\nBerdonasi : *${donasi}*\n`;
-            if(berdonasiRaw === 'ya' && nominalDonasi) {
-                message += `Nominal Donasi : *Rp ${nominalDonasi}*\n`;
-            }
-            message += `\n_Mohon instruksi verifikasi & pembayaran tiket selanjutnya._`;
-
-            // Kirim ke Backend Database (Simultan)
-            fetch('api.php?action=submit_daftar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dbData)
-            }).catch(error => console.error('Gagal connect DB:', error));
-
-            // Kirim ke WhatsApp (Nomor Tujuan Sesuai Request)
-            const nomorTujuan = "6282135067070";
-            const waUrl = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
-
-            // Reset tombol dan form
-            setTimeout(() => {
-                submitBtn.innerHTML = '<span>Kirim & Lanjutkan ke WhatsApp</span><i class="fab fa-whatsapp text-lg"></i>';
-                submitBtn.disabled = false;
-                document.getElementById('form-registrasi').reset();
-                toggleQris('tidak');
-            }, 2000);
-        }
-
-        // --- 5. OBSERVER UNTUK ANIMASI SCROLL ---
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach((el, index) => {
-            if(index > 0) {
-                el.style.animationPlayState = 'paused';
-                observer.observe(el);
-            }
-        });
-        
-        // Logika Mobile Navbar
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
-    </script>
-</body>
-</html>
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60
