@@ -42,12 +42,7 @@
             color: #334155;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Merriweather', serif;
         }
 
@@ -64,58 +59,23 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        .float-anim-1 {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .float-anim-2 {
-            animation: float 7s ease-in-out infinite alternate-reverse;
-        }
-
-        .float-anim-3 {
-            animation: float 8s ease-in-out infinite alternate;
-        }
+        .float-anim-1 { animation: float 6s ease-in-out infinite; }
+        .float-anim-2 { animation: float 7s ease-in-out infinite alternate-reverse; }
+        .float-anim-3 { animation: float 8s ease-in-out infinite alternate; }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(var(--tw-rotate));
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(var(--tw-rotate));
-            }
-
-            100% {
-                transform: translateY(0px) rotate(var(--tw-rotate));
-            }
+            0% { transform: translateY(0px) rotate(var(--tw-rotate)); }
+            50% { transform: translateY(-10px) rotate(var(--tw-rotate)); }
+            100% { transform: translateY(0px) rotate(var(--tw-rotate)); }
         }
     </style>
 </head>
@@ -135,16 +95,11 @@
                 </div>
 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#beranda"
-                        class="text-slate-600 hover:text-primary transition-colors font-medium">Beranda</a>
-                    <a href="#tentang"
-                        class="text-slate-600 hover:text-primary transition-colors font-medium">Tentang</a>
-                    <a href="#panitia"
-                        class="text-slate-600 hover:text-primary transition-colors font-medium">Kepanitiaan</a>
-                    <a href="#jadwal" class="text-slate-600 hover:text-primary transition-colors font-medium">Jadwal
-                        Acara</a>
-                    <a href="#galeri" class="text-slate-600 hover:text-primary transition-colors font-medium">Galeri
-                        Kenangan</a>
+                    <a href="#beranda" class="text-slate-600 hover:text-primary transition-colors font-medium">Beranda</a>
+                    <a href="#tentang" class="text-slate-600 hover:text-primary transition-colors font-medium">Tentang</a>
+                    <a href="#panitia" class="text-slate-600 hover:text-primary transition-colors font-medium">Kepanitiaan</a>
+                    <a href="#jadwal" class="text-slate-600 hover:text-primary transition-colors font-medium">Jadwal Acara</a>
+                    <a href="#galeri" class="text-slate-600 hover:text-primary transition-colors font-medium">Galeri Kenangan</a>
                     <a href="#registrasi"
                         class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Daftar
                         Sekarang</a>
@@ -161,36 +116,26 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col">
-                <a href="#beranda"
-                    class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary">Beranda</a>
-                <a href="#galeri"
-                    class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary">Galeri
-                    Kenangan</a>
-                <a href="#registrasi"
-                    class="block mt-4 px-3 py-3 rounded-md text-base font-medium bg-primary text-white text-center">Daftar
-                    Sekarang</a>
+                <a href="#beranda" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary">Beranda</a>
+                <a href="#galeri" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary">Galeri Kenangan</a>
+                <a href="#registrasi" class="block mt-4 px-3 py-3 rounded-md text-base font-medium bg-primary text-white text-center">Daftar Sekarang</a>
             </div>
         </div>
     </nav>
 
-    <section id="beranda" class="relative hero-bg min-h-screen flex items-center pt-24 pb-32 overflow-hidden">
-        <div
-            class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/50 z-0">
-        </div>
+    <!-- Tambahkan ID hero-section -->
+    <section id="hero-section" class="relative hero-bg min-h-screen flex items-center pt-24 pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/50 z-0"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                 <div class="fade-in text-center lg:text-left pt-10 lg:pt-0">
-                    <span
-                        class="text-accent font-semibold tracking-wider uppercase text-sm md:text-base mb-4 block">Merajut
-                        Kisah, Mengulang Memori</span>
+                    <span class="text-accent font-semibold tracking-wider uppercase text-sm md:text-base mb-4 block">Merajut Kisah, Mengulang Memori</span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
                         Reuni Akbar <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-200">Lintas
-                            Angkatan</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-200">Lintas Angkatan</span>
                     </h1>
                     <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Kembali ke masa-masa indah, bertemu kawan lama, dan merayakan persahabatan yang tak lekang oleh
-                        waktu. Mari ciptakan kenangan baru bersama.
+                        Kembali ke masa-masa indah, bertemu kawan lama, dan merayakan persahabatan yang tak lekang oleh waktu. Mari ciptakan kenangan baru bersama.
                     </p>
                     <a href="#registrasi"
                         class="inline-block px-8 py-4 bg-primary hover:bg-blue-700 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(30,64,175,0.4)] transform hover:scale-105">
@@ -198,24 +143,19 @@
                     </a>
                 </div>
 
-                <div class="fade-in relative h-[350px] sm:h-[450px] lg:h-[500px] w-full mx-auto max-w-[500px] lg:max-w-none mt-8 lg:mt-0"
-                    style="animation-delay: 0.3s;">
-                    <div
-                        class="absolute top-0 left-0 sm:left-4 w-40 sm:w-64 h-40 sm:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-6 float-anim-1 z-10">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                <div class="fade-in relative h-[350px] sm:h-[450px] lg:h-[500px] w-full mx-auto max-w-[500px] lg:max-w-none mt-8 lg:mt-0" style="animation-delay: 0.3s;">
+                    <div class="absolute top-0 left-0 sm:left-4 w-40 sm:w-64 h-40 sm:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-6 float-anim-1 z-10">
+                        <img id="img-hero-1" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                             class="w-full h-full object-cover" alt="Momen Bersama">
                     </div>
-                    <div
-                        class="absolute top-10 right-0 sm:right-4 w-48 sm:w-72 h-32 sm:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform rotate-3 float-anim-2 z-20">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <div class="absolute top-10 right-0 sm:right-4 w-48 sm:w-72 h-32 sm:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform rotate-3 float-anim-2 z-20">
+                        <img id="img-hero-2" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                             class="w-full h-full object-cover" alt="Kumpul Angkatan">
                     </div>
-                    <div
-                        class="absolute bottom-4 left-1/2 -translate-x-1/2 w-56 sm:w-80 h-40 sm:h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-2 float-anim-3 z-30">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-56 sm:w-80 h-40 sm:h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-2 float-anim-3 z-30">
+                        <img id="img-hero-3" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                             class="w-full h-full object-cover" alt="Persahabatan">
-                        <div
-                            class="absolute -bottom-2 -right-2 bg-accent text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border-2 border-white">
+                        <div class="absolute -bottom-2 -right-2 bg-accent text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border-2 border-white">
                             Kenangan Kita</div>
                     </div>
                 </div>
@@ -224,10 +164,8 @@
     </section>
 
     <!-- Countdown Section (Hitung Mundur) -->
-    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 mb-16 fade-in"
-        style="animation-delay: 0.5s;">
-        <div
-            class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 border-b-4 border-accent flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 mb-16 fade-in" style="animation-delay: 0.5s;">
+        <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 border-b-4 border-accent flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
                 <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Menuju Hari H Reuni</h2>
                 <p class="text-slate-500 font-medium mt-2">Persiapkan dirimu untuk momen bersejarah ini!</p>
@@ -236,8 +174,7 @@
             <div class="flex gap-2 md:gap-4 text-center" id="countdown-container">
                 <div class="bg-slate-50 w-16 md:w-24 py-3 md:py-4 rounded-2xl border border-slate-100 shadow-sm">
                     <div id="hari" class="text-2xl md:text-4xl font-bold text-primary">00</div>
-                    <div class="text-[10px] md:text-xs text-slate-500 font-bold uppercase mt-1 tracking-wider">Hari
-                    </div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-bold uppercase mt-1 tracking-wider">Hari</div>
                 </div>
                 <div class="bg-slate-50 w-16 md:w-24 py-3 md:py-4 rounded-2xl border border-slate-100 shadow-sm">
                     <div id="jam" class="text-2xl md:text-4xl font-bold text-primary">00</div>
@@ -245,13 +182,11 @@
                 </div>
                 <div class="bg-slate-50 w-16 md:w-24 py-3 md:py-4 rounded-2xl border border-slate-100 shadow-sm">
                     <div id="menit" class="text-2xl md:text-4xl font-bold text-primary">00</div>
-                    <div class="text-[10px] md:text-xs text-slate-500 font-bold uppercase mt-1 tracking-wider">Menit
-                    </div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-bold uppercase mt-1 tracking-wider">Menit</div>
                 </div>
                 <div class="bg-slate-50 w-16 md:w-24 py-3 md:py-4 rounded-2xl border border-slate-100 shadow-sm">
                     <div id="detik" class="text-2xl md:text-4xl font-bold text-primary">00</div>
-                    <div class="text-[10px] md:text-xs text-slate-500 font-bold uppercase mt-1 tracking-wider">Detik
-                    </div>
+                    <div class="text-[10px] md:text-xs text-slate-500 font-bold uppercase mt-1 tracking-wider">Detik</div>
                 </div>
             </div>
         </div>
@@ -274,43 +209,36 @@
                         <h3 class="font-bold text-slate-800 mb-4 text-xl border-b pb-2">Detail Pelaksanaan</h3>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
                                     <i class="far fa-calendar-alt text-lg"></i>
                                 </div>
-                                <div><span class="block font-semibold text-slate-800">Waktu Pelaksanaan</span><span
-                                        class="text-slate-600">Minggu, 30 Agustus 2026</span></div>
+                                <div><span class="block font-semibold text-slate-800">Waktu Pelaksanaan</span><span class="text-slate-600">Minggu, 30 Agustus 2026</span></div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-map-marker-alt text-lg"></i>
                                 </div>
-                                <div><span class="block font-semibold text-slate-800">Lokasi Acara</span><span
-                                        class="text-slate-600">Ruang Terbuka Hijau Pagutan, Mataram</span></div>
+                                <div><span class="block font-semibold text-slate-800">Lokasi Acara</span><span class="text-slate-600">Ruang Terbuka Hijau Pagutan, Mataram</span></div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-building text-lg"></i>
                                 </div>
-                                <div><span class="block font-semibold text-slate-800">Sekretariat Panitia</span><span
-                                        class="text-slate-600">Kopi Hotel Kotaraja, Mataram</span></div>
+                                <div><span class="block font-semibold text-slate-800">Sekretariat Panitia</span><span class="text-slate-600">Kopi Hotel Kotaraja, Mataram</span></div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
                                     <i class="fab fa-whatsapp text-lg"></i>
                                 </div>
-                                <div><span class="block font-semibold text-slate-800">Narahubung</span><span
-                                        class="text-slate-600">Joko Waskito (0823-5944-4679)</span></div>
+                                <div><span class="block font-semibold text-slate-800">Narahubung</span><span class="text-slate-600">Joko Waskito (0823-5944-4679)</span></div>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="relative fade-in">
                     <div class="absolute inset-0 bg-primary rounded-3xl transform rotate-3 scale-105 opacity-10"></div>
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                    <!-- Tambahkan ID img-tentang -->
+                    <img id="img-tentang" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                         alt="Suasana Reuni"
                         class="rounded-3xl shadow-2xl relative z-10 w-full h-auto object-cover aspect-[4/3]">
                 </div>
@@ -318,7 +246,7 @@
         </div>
     </section>
 
-   <!-- Kepanitiaan Section dengan SC Grid -->
+   <!-- Kepanitiaan Section -->
     <section id="panitia" class="py-24 bg-slate-100 border-t border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -336,28 +264,28 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="H. Andy Hadianto">
+                        <img id="img-sc-1" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="H. Andy Hadianto">
                         <h4 class="font-bold text-slate-800 text-base leading-tight mb-1">H. Andy Hadianto, S.H., M.H., M.M.</h4>
                         <p class="text-xs text-primary font-semibold mb-2">Ketua SC</p>
                         <p class="text-xs text-slate-500">Tokoh masyarakat dan praktisi hukum dengan dedikasi tinggi.</p>
                     </div>
                     
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="Prof. Mansur">
+                        <img id="img-sc-2" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="Prof. Mansur">
                         <h4 class="font-bold text-slate-800 text-base leading-tight mb-1">Prof. Dr. Ir. H. Mansur Ma'shum, Ph.D.</h4>
                         <p class="text-xs text-primary font-semibold mb-2">Anggota SC</p>
                         <p class="text-xs text-slate-500">Akademisi senior yang melahirkan banyak inovasi.</p>
                     </div>
 
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="H. Lalu Makmur">
+                        <img id="img-sc-3" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="H. Lalu Makmur">
                         <h4 class="font-bold text-slate-800 text-base leading-tight mb-1">H. Lalu Makmur Said, MM</h4>
                         <p class="text-xs text-primary font-semibold mb-2">Anggota SC</p>
                         <p class="text-xs text-slate-500">Birokrat berpengalaman perajut solidaritas lintas generasi.</p>
                     </div>
 
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="Ir. Made Dresta">
+                        <img id="img-sc-4" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-50 shadow-sm" alt="Ir. Made Dresta">
                         <h4 class="font-bold text-slate-800 text-base leading-tight mb-1">Ir. Made Dresta Negara</h4>
                         <p class="text-xs text-primary font-semibold mb-2">Anggota SC</p>
                         <p class="text-xs text-slate-500">Profesional dan pengusaha pendukung kebersamaan alumni.</p>
@@ -435,8 +363,7 @@
         </div>
     </section>
 
-
-    <!-- Galeri 25 Foto Section (Dinamis via DB) -->
+    <!-- Galeri 16 Foto Section (Dinamis via DB) -->
     <section id="galeri" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -444,7 +371,6 @@
                 <div class="w-20 h-1 bg-accent mx-auto mb-6 rounded-full"></div>
             </div>
 
-            <!-- Container Grid (Dikosongkan, akan diisi oleh JS) -->
             <div id="gallery-container"
                 class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-500">
                 <div class="text-center col-span-full py-10 text-slate-500">Memuat foto galeri...</div>
@@ -459,7 +385,6 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden fade-in">
                 <div class="grid grid-cols-1 md:grid-cols-5">
-
                     <div class="bg-primary text-white p-8 md:p-10 md:col-span-2 flex flex-col justify-between">
                         <div>
                             <h3 class="text-2xl font-bold mb-2">Tiket Presale</h3>
@@ -475,158 +400,87 @@
                         <p class="text-slate-500 mb-6 text-sm">Pilih jenis pendaftaran dan isi data Anda.</p>
 
                         <div class="mb-8">
-                            <label class="block text-sm font-semibold text-slate-700 mb-3">Pilih Jenis Pendaftaran <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-sm font-semibold text-slate-700 mb-3">Pilih Jenis Pendaftaran <span class="text-red-500">*</span></label>
                             <div class="flex flex-col sm:flex-row gap-4">
                                 <label class="flex-1 cursor-pointer">
-                                    <input type="radio" name="tipe_pendaftaran" value="individu" id="radio-individu"
-                                        class="peer sr-only" checked onchange="toggleFormType('individu')">
-                                    <div
-                                        class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-blue-50 transition-all text-center font-medium text-slate-600 peer-checked:text-primary hover:bg-slate-50 shadow-sm">
+                                    <input type="radio" name="tipe_pendaftaran" value="individu" id="radio-individu" class="peer sr-only" checked onchange="toggleFormType('individu')">
+                                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-blue-50 transition-all text-center font-medium text-slate-600 peer-checked:text-primary hover:bg-slate-50 shadow-sm">
                                         <i class="fas fa-user text-2xl mb-2 block"></i> Individu
                                     </div>
                                 </label>
                                 <label class="flex-1 cursor-pointer">
-                                    <input type="radio" name="tipe_pendaftaran" value="kelompok" id="radio-kelompok"
-                                        class="peer sr-only" onchange="toggleFormType('kelompok')">
-                                    <div
-                                        class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-blue-50 transition-all text-center font-medium text-slate-600 peer-checked:text-primary hover:bg-slate-50 shadow-sm">
+                                    <input type="radio" name="tipe_pendaftaran" value="kelompok" id="radio-kelompok" class="peer sr-only" onchange="toggleFormType('kelompok')">
+                                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-blue-50 transition-all text-center font-medium text-slate-600 peer-checked:text-primary hover:bg-slate-50 shadow-sm">
                                         <i class="fas fa-users text-2xl mb-2 block"></i> Kelompok
                                     </div>
                                 </label>
                             </div>
                         </div>
 
-                        <form id="form-registrasi" class="space-y-5"
-                            onsubmit="event.preventDefault(); handleRegistration();">
+                        <form id="form-registrasi" class="space-y-5" onsubmit="event.preventDefault(); handleRegistration();">
 
                             <!-- FORM INDIVIDU -->
                             <div id="form-individu" class="space-y-5 transition-all duration-300 block">
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap Peserta
-                                        *</label><input type="text" id="namaLengkap" name="namaLengkap"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                </div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah
-                                        (SD/SMP/SMA/SMK/Kuliah di Mataram) *</label><input type="text" id="asal_sekolah"
-                                        name="asal_sekolah"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                        placeholder="Contoh: SMAN 1 Mataram"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap Peserta *</label><input type="text" id="namaLengkap" name="namaLengkap" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah (SD/SMP/SMA/SMK/Kuliah di Mataram) *</label><input type="text" id="asal_sekolah" name="asal_sekolah" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: SMAN 1 Mataram"></div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Tahun Kelulusan
-                                            *</label><input type="number" id="tahun_lulus" name="tahun_lulus"
-                                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                    </div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp /
-                                            HP Aktif *</label><input type="tel" id="no_wa_individu"
-                                            name="no_wa_individu"
-                                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                    </div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Tahun Kelulusan *</label><input type="number" id="tahun_lulus" name="tahun_lulus" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp / HP Aktif *</label><input type="tel" id="no_wa_individu" name="no_wa_individu" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
                                 </div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Domisili Saat Ini
-                                        *</label><input type="text" id="domisili" name="domisili"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                </div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Domisili Saat Ini *</label><input type="text" id="domisili" name="domisili" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Apakah Membawa
-                                        Pendamping? *</label>
-                                    <select id="pendamping" name="pendamping"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                        onchange="document.getElementById('jumlah_pendamping_lainnya').classList.toggle('hidden', this.value !== 'lainnya')">
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Apakah Membawa Pendamping? *</label>
+                                    <select id="pendamping" name="pendamping" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" onchange="document.getElementById('jumlah_pendamping_lainnya').classList.toggle('hidden', this.value !== 'lainnya')">
                                         <option value="0">Tidak, Saya Sendiri</option>
                                         <option value="1">Ya, 1 Orang Pendamping</option>
                                         <option value="lainnya">Yang lain (Lebih dari 1 orang)</option>
                                     </select>
                                 </div>
-                                <div id="jumlah_pendamping_lainnya"
-                                    class="hidden bg-blue-50/50 p-4 rounded-lg border border-blue-100 mt-3">
-                                    <label class="block text-sm font-medium text-primary mb-1">Jumlah Pendamping
-                                        *</label>
-                                    <input type="number" id="jumlah_custom" name="jumlah_custom" min="2"
-                                        class="w-full px-4 py-2 bg-white border border-blue-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                        placeholder="Misal: 3">
+                                <div id="jumlah_pendamping_lainnya" class="hidden bg-blue-50/50 p-4 rounded-lg border border-blue-100 mt-3">
+                                    <label class="block text-sm font-medium text-primary mb-1">Jumlah Pendamping *</label>
+                                    <input type="number" id="jumlah_custom" name="jumlah_custom" min="2" class="w-full px-4 py-2 bg-white border border-blue-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Misal: 3">
                                 </div>
                             </div>
 
                             <!-- FORM KELOMPOK -->
                             <div id="form-kelompok" class="space-y-5 transition-all duration-300 hidden">
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Perwakilan
-                                        Kelompok *</label><input type="text" id="nama_perwakilan" name="nama_perwakilan"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                </div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp
-                                        Perwakilan (Aktif) *</label><input type="tel" id="no_wa_kelompok"
-                                        name="no_wa_kelompok"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                </div>
-
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama Perwakilan Kelompok *</label><input type="text" id="nama_perwakilan" name="nama_perwakilan" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Nomor Whatsapp Perwakilan (Aktif) *</label><input type="tel" id="no_wa_kelompok" name="no_wa_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah
-                                            *</label><input type="text" id="asal_sekolah_kelompok"
-                                            name="asal_sekolah_kelompok"
-                                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                            placeholder="Contoh: SMAN 1 Mataram"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Angkatan Kelompok
-                                            *</label><input type="number" id="angkatan_kelompok"
-                                            name="angkatan_kelompok"
-                                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                            placeholder="Contoh: 2015"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Asal Sekolah *</label><input type="text" id="asal_sekolah_kelompok" name="asal_sekolah_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: SMAN 1 Mataram"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Angkatan Kelompok *</label><input type="number" id="angkatan_kelompok" name="angkatan_kelompok" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="Contoh: 2015"></div>
                                 </div>
-
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Jumlah Anggota yang
-                                        Didaftarkan (Termasuk perwakilan) *</label><input type="number"
-                                        id="jumlah_anggota" name="jumlah_anggota" min="2"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none">
-                                </div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Tuliskan Daftar Nama
-                                        Anggota Kelompok beserta Nomor HP-nya *</label><textarea
-                                        id="daftar_nama_anggota" name="daftar_nama_anggota" rows="5"
-                                        class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none resize-none"
-                                        placeholder="1. Rony - 0812345&#10;2. Faisal - 0893713"></textarea></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Jumlah Anggota yang Didaftarkan (Termasuk perwakilan) *</label><input type="number" id="jumlah_anggota" name="jumlah_anggota" min="2" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Tuliskan Daftar Nama Anggota Kelompok beserta Nomor HP-nya *</label><textarea id="daftar_nama_anggota" name="daftar_nama_anggota" rows="5" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none resize-none" placeholder="1. Rony - 0812345&#10;2. Faisal - 0893713"></textarea></div>
                             </div>
 
                             <!-- Opsi Donasi & QRIS Container -->
                             <div class="border-t border-slate-200 pt-5 mt-5">
-                                <label class="block text-sm font-bold text-slate-800 mb-2">Apakah Anda ingin berdonasi
-                                    untuk kesuksesan acara ini?</label>
-                                <select id="opsi_donasi" name="opsi_donasi"
-                                    class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                    onchange="toggleQris(this.value)">
+                                <label class="block text-sm font-bold text-slate-800 mb-2">Apakah Anda ingin berdonasi untuk kesuksesan acara ini?</label>
+                                <select id="opsi_donasi" name="opsi_donasi" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" onchange="toggleQris(this.value)">
                                     <option value="tidak">Tidak, cukup bayar tiket saja</option>
                                     <option value="ya">Ya, saya ingin berdonasi</option>
                                 </select>
                             </div>
 
-                            <div id="qris-container"
-                                class="hidden bg-slate-50 p-6 rounded-xl border border-slate-200 text-center flex flex-col items-center transition-all mt-4">
+                            <div id="qris-container" class="hidden bg-slate-50 p-6 rounded-xl border border-slate-200 text-center flex flex-col items-center transition-all mt-4">
                                 <h4 class="font-bold text-slate-800 mb-2">Scan QRIS untuk Donasi</h4>
-                                <p class="text-xs text-slate-500 mb-4">Silakan scan kode QR di bawah ini menggunakan
-                                    aplikasi M-Banking atau E-Wallet Anda.</p>
-
-                                <img id="gambar-qris"
-                                    src="https://placehold.co/250x250/ffffff/000000?text=Belum+Ada+QRIS"
-                                    alt="QRIS Donasi"
-                                    class="w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-white shadow-md rounded-lg mb-4">
-
+                                <p class="text-xs text-slate-500 mb-4">Silakan scan kode QR di bawah ini menggunakan aplikasi M-Banking atau E-Wallet Anda.</p>
+                                <img id="gambar-qris" src="https://placehold.co/250x250/ffffff/000000?text=Belum+Ada+QRIS" alt="QRIS Donasi" class="w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-white shadow-md rounded-lg mb-4">
                                 <div class="w-full text-left mt-2">
-                                    <label class="block text-sm font-bold text-slate-700 mb-1">Nominal Donasi
-                                        (Opsional)</label>
+                                    <label class="block text-sm font-bold text-slate-700 mb-1">Nominal Donasi (Opsional)</label>
                                     <div class="relative">
-                                        <div
-                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                             <span class="text-slate-500 sm:text-sm">Rp</span>
                                         </div>
-                                        <input type="text" id="nominal_donasi" name="nominal_donasi"
-                                            class="w-full pl-10 px-4 py-2 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none"
-                                            placeholder="0" onkeyup="formatRupiahInput(this)">
+                                        <input type="text" id="nominal_donasi" name="nominal_donasi" class="w-full pl-10 px-4 py-2 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="0" onkeyup="formatRupiahInput(this)">
                                     </div>
                                 </div>
-                                <p class="text-xs text-accent font-medium mt-4">* Bukti transfer tiket & donasi
-                                    dilampirkan bersamaan ke WhatsApp panitia.</p>
+                                <p class="text-xs text-accent font-medium mt-4">* Bukti transfer tiket & donasi dilampirkan bersamaan ke WhatsApp panitia.</p>
                             </div>
 
                             <div class="pt-4">
-                                <button type="submit"
-                                    class="w-full bg-primary hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex justify-center items-center gap-2">
+                                <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex justify-center items-center gap-2">
                                     <span>Kirim & Lanjutkan ke WhatsApp</span>
                                     <i class="fab fa-whatsapp text-lg"></i>
                                 </button>
@@ -638,8 +492,6 @@
         </div>
     </section>
 
-
-
     <script>
         // --- 1. SCRIPT COUNTDOWN (Hitung Mundur) ---
         const targetDate = new Date('2026-08-30T08:00:00').getTime();
@@ -649,7 +501,7 @@
 
             if (distance < 0) {
                 clearInterval(countdownInterval);
-                document.getElementById('countdown-container').innerHTML = '<div class="text-xl md:text-2xl font-bold text-red-500 w-full text-center py-2 fade-in">🎉 ACARA TELAH DIMULAI! 🎉</div>';
+                document.getElementById('countdown-container').innerHTML = '<div class="text-xl md:text-2xl font-bold text-red-500 w-full text-center py-2 fade-in">ðŸŽ‰ ACARA TELAH DIMULAI! ðŸŽ‰</div>';
                 return;
             }
             document.getElementById('hari').innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
@@ -670,97 +522,153 @@
 
         function formatRupiahInput(input) {
             let value = input.value.replace(/[^,\d]/g, '').toString();
-            if (value) {
-                input.value = new Intl.NumberFormat('id-ID').format(value);
-            } else {
-                input.value = '';
-            }
+            if (value) { input.value = new Intl.NumberFormat('id-ID').format(value); } 
+            else { input.value = ''; }
         }
 
-        // --- 3. FETCH PENGATURAN (Logo, Favicon, QRIS, Galeri) ---
-        fetch('api.php?action=get_pengaturan')
-            .then(res => res.json())
-            .then(data => {
-                if (data.qris_donasi) document.getElementById('gambar-qris').src = data.qris_donasi;
-                if (data.favicon) document.getElementById('dynamic-favicon').href = data.favicon;
-                if (data.logo_utama) {
-                    document.getElementById('logo-utama').src = data.logo_utama;
-                    document.getElementById('logo-utama').classList.remove('hidden');
-                    document.getElementById('logo-teks').classList.add('hidden');
-                }
+        // --- 3. FETCH PENGATURAN (Semua Gambar & Galeri 16) ---
+        const renderGallery = (data = {}) => {
+            if (data.qris_donasi) document.getElementById('gambar-qris').src = data.qris_donasi;
+            if (data.favicon) document.getElementById('dynamic-favicon').href = data.favicon;
+            if (data.logo_utama) {
+                document.getElementById('logo-utama').src = data.logo_utama;
+                document.getElementById('logo-utama').classList.remove('hidden');
+                document.getElementById('logo-teks').classList.add('hidden');
+            }
 
-                // Render Galeri Dinamis (Menampilkan 8 gambar yang diset dari DB, fallback default unsplash)
-                const galleryContainer = document.getElementById('gallery-container');
-                const defaultImages = [
-                    "1523580846011-d3a5bc25702b", "1529390079861-591de354faf5", "1543269865-cbf427effbad", "1491438590914-bc09fcaaf77a",
-                    "1478147427282-58a87a120781", "1522202176988-66273c2fd55f", "1540317580384-e5d43616b9aa", "1511795409834-ef04bbd61622"
-                ];
+            if (data.img_hero_bg) document.getElementById('hero-section').style.backgroundImage = `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('${data.img_hero_bg}')`;
+            if (data.img_hero_1) document.getElementById('img-hero-1').src = data.img_hero_1;
+            if (data.img_hero_2) document.getElementById('img-hero-2').src = data.img_hero_2;
+            if (data.img_hero_3) document.getElementById('img-hero-3').src = data.img_hero_3;
+            if (data.img_tentang) document.getElementById('img-tentang').src = data.img_tentang;
 
-                let galleryHtml = '';
-                for (let i = 1; i <= 8; i++) {
-                    // Gunakan gambar dari DB (galeri_1 s/d galeri_8), jika kosong gunakan gambar default
-                    let imgSrc = data[`galeri_${i}`] ? data[`galeri_${i}`] : `https://images.unsplash.com/photo-${defaultImages[i - 1]}?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80`;
+            for(let i=1; i<=4; i++) {
+                if (data[`img_sc_${i}`]) document.getElementById(`img-sc-${i}`).src = data[`img_sc_${i}`];
+            }
 
-                    galleryHtml += `
-                    <div class="group relative overflow-hidden rounded-xl aspect-square cursor-pointer">
-                        <img src="${imgSrc}" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                `;
-                }
-                galleryContainer.innerHTML = galleryHtml;
-            });
+            const galleryContainer = document.getElementById('gallery-container');
+            const defaultImages = [
+                "1523580846011-d3a5bc25702b", "1529390079861-591de354faf5", "1543269865-cbf427effbad", "1491438590914-bc09fcaaf77a",
+                "1478147427282-58a87a120781", "1522202176988-66273c2fd55f", "1540317580384-e5d43616b9aa", "1511795409834-ef04bbd61622",
+                "1523580494863-6f3031224c94", "1511795409834-ef04bbd61622", "1543269865-cbf427effbad", "1529390079861-591de354faf5",
+                "1522202176988-66273c2fd55f", "1478147427282-58a87a120781", "1540317580384-e5d43616b9aa", "1491438590914-bc09fcaaf77a"
+            ];
+
+            let galleryHtml = '';
+            for (let i = 1; i <= 16; i++) {
+                let imgSrc = data[`galeri_${i}`] ? data[`galeri_${i}`] : `https://images.unsplash.com/photo-${defaultImages[i - 1]}?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80`;
+                galleryHtml += `
+                <div class="group relative overflow-hidden rounded-xl aspect-square cursor-pointer bg-slate-100">
+                    <img src="${imgSrc}" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110">
+                </div>`;
+            }
+            galleryContainer.innerHTML = galleryHtml;
+        };
+
+        try {
+            let apiUrl = 'api.php?action=get_pengaturan';
+            // Hindari error URL saat dijalankan pada environment preview (blob: atau data:)
+            if (window.location.protocol === 'blob:' || window.location.protocol === 'data:') {
+                apiUrl = 'https://dummy.local/api.php?action=get_pengaturan';
+            }
+            
+            fetch(apiUrl)
+                .then(res => res.json())
+                .then(data => renderGallery(data))
+                .catch(err => {
+                    console.log("Menggunakan data default untuk galeri (API lokal tidak ditemukan saat preview).");
+                    renderGallery({});
+                });
+        } catch (error) {
+            console.log("Error API, menggunakan default.");
+            renderGallery({});
+        }
 
         // --- 4. SUBMIT FORM KE API & WHATSAPP ---
         function handleRegistration() {
             const isIndividu = document.getElementById('radio-individu').checked;
-
-            // Siapkan payload data
             let payload = {
                 tipe_pendaftaran: isIndividu ? 'individu' : 'kelompok',
                 berdonasi: document.getElementById('opsi_donasi').value === 'ya' ? 'Ya' : 'Tidak',
                 nominalDonasi: document.getElementById('nominal_donasi').value
             };
-
             let waText = "";
 
             if (isIndividu) {
-                payload.nama = document.getElementById('namaLengkap').value;
-                payload.asal = document.getElementById('asal_sekolah').value;
-                payload.tahun = document.getElementById('tahun_lulus').value;
-                payload.wa = document.getElementById('no_wa_individu').value;
-                payload.domisili = document.getElementById('domisili').value;
+                payload.nama = document.getElementById('namaLengkap').value.trim();
+                payload.asal = document.getElementById('asal_sekolah').value.trim();
+                payload.tahun = document.getElementById('tahun_lulus').value.trim();
+                payload.wa = document.getElementById('no_wa_individu').value.trim();
+                payload.domisili = document.getElementById('domisili').value.trim();
+                
                 let pendampingVal = document.getElementById('pendamping').value;
-                payload.jmlPendamping = pendampingVal === 'lainnya' ? document.getElementById('jumlah_custom').value : pendampingVal;
+                payload.jmlPendamping = pendampingVal === 'lainnya' ? document.getElementById('jumlah_custom').value.trim() : pendampingVal;
+
+                if (!payload.nama || !payload.asal || !payload.tahun || !payload.wa || !payload.domisili || (pendampingVal === 'lainnya' && !payload.jmlPendamping)) {
+                    alert("Mohon lengkapi semua isian pendaftaran yang wajib diisi (*).");
+                    return; 
+                }
 
                 waText = `Halo Panitia, saya ingin mendaftar Reuni Akbar '26 jalur *INDIVIDU*:\n\nNama: ${payload.nama}\nAsal Sekolah: ${payload.asal} (${payload.tahun})\nNo WA: ${payload.wa}\nDomisili: ${payload.domisili}\nJumlah Pendamping: ${payload.jmlPendamping} orang\n\nBerdonasi: ${payload.berdonasi}\nNominal: Rp ${payload.nominalDonasi}`;
             } else {
-                payload.namaPerwakilan = document.getElementById('nama_perwakilan').value;
-                payload.waKelompok = document.getElementById('no_wa_kelompok').value;
-                payload.sekolahAngkatan = document.getElementById('asal_sekolah_kelompok').value + " - Angkatan " + document.getElementById('angkatan_kelompok').value;
-                payload.jumlahAnggota = document.getElementById('jumlah_anggota').value;
-                payload.daftarNama = document.getElementById('daftar_nama_anggota').value;
+                payload.namaPerwakilan = document.getElementById('nama_perwakilan').value.trim();
+                payload.waKelompok = document.getElementById('no_wa_kelompok').value.trim();
+                
+                let asal_sek = document.getElementById('asal_sekolah_kelompok').value.trim();
+                let angkatan_sek = document.getElementById('angkatan_kelompok').value.trim();
+                payload.sekolahAngkatan = asal_sek + " - Angkatan " + angkatan_sek;
+                
+                payload.jumlahAnggota = document.getElementById('jumlah_anggota').value.trim();
+                payload.daftarNama = document.getElementById('daftar_nama_anggota').value.trim();
+
+                if (!payload.namaPerwakilan || !payload.waKelompok || !asal_sek || !angkatan_sek || !payload.jumlahAnggota || !payload.daftarNama) {
+                    alert("Mohon lengkapi semua isian pendaftaran Kelompok yang wajib diisi (*).");
+                    return; 
+                }
 
                 waText = `Halo Panitia, saya ingin mendaftar Reuni Akbar '26 jalur *KELOMPOK*:\n\nPerwakilan: ${payload.namaPerwakilan}\nNo WA: ${payload.waKelompok}\nSekolah/Angkatan: ${payload.sekolahAngkatan}\nJumlah Anggota: ${payload.jumlahAnggota} orang\n\n*Daftar Anggota:*\n${payload.daftarNama}\n\nBerdonasi: ${payload.berdonasi}\nNominal: Rp ${payload.nominalDonasi}`;
             }
 
-            // Kirim ke database (menggunakan api.php, seperti desain asli user)
-            fetch('api.php?action=submit_daftar', {
+            const btnSubmit = document.querySelector('#form-registrasi button[type="submit"]');
+            const originalBtnText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = '<span>Memproses Data...</span> <i class="fas fa-spinner fa-spin"></i>';
+            btnSubmit.disabled = true;
+
+            let apiUrlSubmit = 'api.php?action=submit_daftar';
+            if (window.location.protocol === 'blob:' || window.location.protocol === 'data:') {
+                // Mock respons saat dijalankan di Preview untuk menghindari Error parsing URL
+                setTimeout(() => {
+                    const noWaPanitia = "6282359444679"; 
+                    const waUrl = `https://wa.me/${noWaPanitia}?text=${encodeURIComponent(waText)}`;
+                    alert("Mode Preview: Data berhasil disimpan! Anda akan dialihkan ke WhatsApp Panitia.");
+                    window.location.href = waUrl;
+                    document.getElementById('form-registrasi').reset();
+                    btnSubmit.innerHTML = originalBtnText;
+                    btnSubmit.disabled = false;
+                }, 1000);
+                return;
+            }
+
+            fetch(apiUrlSubmit, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             }).then(res => res.json()).then(res => {
                 if (res.status === 'success') {
-                    // Redirect ke WA
-                    const noWaPanitia = "6282359444679"; // Ganti jika perlu
-                    window.open(`https://wa.me/${noWaPanitia}?text=${encodeURIComponent(waText)}`, '_blank');
-                    alert("Data berhasil disimpan. Anda akan dialihkan ke WhatsApp Panitia.");
-                    window.location.reload();
+                    const noWaPanitia = "6282359444679"; 
+                    const waUrl = `https://wa.me/${noWaPanitia}?text=${encodeURIComponent(waText)}`;
+                    alert("Data berhasil disimpan! Anda akan dialihkan ke WhatsApp Panitia.");
+                    window.location.href = waUrl;
+                    document.getElementById('form-registrasi').reset();
                 } else {
                     alert("Terjadi kesalahan saat menyimpan data: " + (res.message || "Unknown error"));
                 }
             }).catch(err => {
                 console.error(err);
                 alert("Gagal terhubung ke server.");
+            }).finally(() => {
+                btnSubmit.innerHTML = originalBtnText;
+                btnSubmit.disabled = false;
             });
         }
     </script>
@@ -770,13 +678,10 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <div
-                            class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            RA</div>
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">RA</div>
                         <span class="font-serif font-bold text-lg text-white">Reuni Akbar '26</span>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Momen apresiasi atas ikatan yang pernah
-                        terjalin. Merajut kisah, mengulang memori.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Momen apresiasi atas ikatan yang pernah terjalin. Merajut kisah, mengulang memori.</p>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-4 border-b border-slate-800 pb-2">Informasi Acara</h4>
@@ -795,11 +700,9 @@
                 </div>
             </div>
         </div>
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm border-t border-slate-800 pt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm border-t border-slate-800 pt-8">
             <p>&copy; 2026 Panitia Reuni Akbar Lintas Angkatan. Hak Cipta Dilindungi.</p>
         </div>
     </footer>
 </body>
-
 </html>
