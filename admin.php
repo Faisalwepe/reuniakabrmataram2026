@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Reuni Akbar '26</title>
-    <!-- Favicon Dinamis untuk Admin -->
     <link id="admin-favicon" rel="icon" type="image/png" href="https://placehold.co/32x32">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,7 +38,6 @@
     </div>
     
     <script>
-        // Tarik logo untuk halaman login
         fetch('api.php?action=get_pengaturan').then(r=>r.json()).then(data=>{
             if(data.logo_utama) document.getElementById('login-logo').src = data.logo_utama;
             if(data.favicon) document.getElementById('admin-favicon').href = data.favicon;
@@ -106,7 +104,6 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-                        <!-- Card Total Real -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 col-span-1 md:col-span-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
                             <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-3xl"><i class="fas fa-users"></i></div>
                             <div>
@@ -116,7 +113,6 @@
                             </div>
                         </div>
 
-                        <!-- Card Individu -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl"><i class="fas fa-user"></i></div>
@@ -127,7 +123,6 @@
                             </div>
                         </div>
 
-                        <!-- Card Kelompok -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl"><i class="fas fa-users-cog"></i></div>
@@ -138,7 +133,6 @@
                             </div>
                         </div>
                         
-                        <!-- Card Donasi (Pihak) -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xl"><i class="fas fa-hand-holding-heart"></i></div>
@@ -146,13 +140,12 @@
                             </div>
                         </div>
 
-                        <!-- Card Uang Donasi -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col bg-slate-800 text-white">
                             <div class="flex items-center gap-4 mb-2">
-                                <div class="w-12 h-12 rounded-full bg-white/20 text-white flex items-center justify-center text-xl"><i class="fas fa-wallet"></i></div>
-                                <div><p class="text-slate-300 text-sm font-medium">Total Uang Donasi</p></div>
+                                <div class="w-12 h-12 rounded-full bg-black/20 text-white flex items-center justify-center text-xl"><i class="fas fa-wallet"></i></div>
+                                <div><p class="text-black text-sm font-medium">Total Uang Donasi</p></div>
                             </div>
-                            <p class="text-2xl font-bold mt-2" id="total-donasi-rp">Rp 0</p>
+                            <p class="text-2xl font-bold text-slate-800" id="total-donasi-rp">Rp 0</p>
                         </div>
                     </div>
                 </div>
@@ -252,13 +245,56 @@
                         </div>
                     </div>
 
-                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b border-slate-200 pb-2">Galeri Foto (Muncul di Halaman Depan)</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <?php for($i=1; $i<=8; $i++): ?>
+                    <!-- PENGATURAN HERO & TENTANG -->
+                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b border-slate-200 pb-2">Halaman Utama (Beranda & Tentang)</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
-                            <h3 class="font-bold text-sm text-slate-800 mb-2">Slot Foto <?= $i ?></h3>
-                            <img id="preview-galeri_<?= $i ?>" src="https://placehold.co/300x300?text=Foto+<?= $i ?>" class="w-full h-32 rounded object-cover mb-3 bg-slate-100">
-                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-galeri_<?= $i ?>', 'galeri_<?= $i ?>')">
+                            <h3 class="font-bold text-xs text-slate-800 mb-2">Background Hero</h3>
+                            <img id="preview-img_hero_bg" src="https://placehold.co/300x150" class="w-full h-24 rounded object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-img_hero_bg', 'img_hero_bg')">
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-xs text-slate-800 mb-2">Foto Melayang 1</h3>
+                            <img id="preview-img_hero_1" src="https://placehold.co/150x150" class="w-full h-24 rounded object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-img_hero_1', 'img_hero_1')">
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-xs text-slate-800 mb-2">Foto Melayang 2</h3>
+                            <img id="preview-img_hero_2" src="https://placehold.co/150x150" class="w-full h-24 rounded object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-img_hero_2', 'img_hero_2')">
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-xs text-slate-800 mb-2">Foto Melayang 3</h3>
+                            <img id="preview-img_hero_3" src="https://placehold.co/150x150" class="w-full h-24 rounded object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-img_hero_3', 'img_hero_3')">
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-xs text-slate-800 mb-2">Foto Tentang</h3>
+                            <img id="preview-img_tentang" src="https://placehold.co/300x200" class="w-full h-24 rounded object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-img_tentang', 'img_tentang')">
+                        </div>
+                    </div>
+
+                    <!-- PENGATURAN TOKOH PANITIA (SC) -->
+                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b border-slate-200 pb-2">Foto Tokoh Panitia (SC)</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <?php for($i=1; $i<=4; $i++): ?>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-sm text-slate-800 mb-2">Tokoh SC <?= $i ?></h3>
+                            <img id="preview-img_sc_<?= $i ?>" src="https://placehold.co/150x150" class="w-24 h-24 rounded-full mx-auto object-cover mb-3 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[10px] w-full" onchange="convertToBase64(this, 'preview-img_sc_<?= $i ?>', 'img_sc_<?= $i ?>')">
+                        </div>
+                        <?php endfor; ?>
+                    </div>
+
+                    <!-- PENGATURAN GALERI 16 FOTO -->
+                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b border-slate-200 pb-2">Galeri Foto (16 Slot)</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-10">
+                        <?php for($i=1; $i<=16; $i++): ?>
+                        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h3 class="font-bold text-xs text-slate-800 mb-2">Galeri <?= $i ?></h3>
+                            <img id="preview-galeri_<?= $i ?>" src="https://placehold.co/150x150?text=<?= $i ?>" class="w-full h-16 rounded object-cover mb-2 bg-slate-100">
+                            <input type="file" accept="image/*" class="text-[9px] w-full" onchange="convertToBase64(this, 'preview-galeri_<?= $i ?>', 'galeri_<?= $i ?>')">
                         </div>
                         <?php endfor; ?>
                     </div>
@@ -283,7 +319,6 @@
                         </table>
                     </div>
                     
-                    <!-- Modal Form User -->
                     <div id="user-modal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
                         <div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 m-4">
                             <h3 class="text-xl font-bold mb-4" id="modal-title">Tambah User</h3>
@@ -313,7 +348,7 @@
                     </div>
                 </div>
                 <?php else: ?>
-                <!-- 6. PROFIL SAYA (UNTUK ADMIN BIASA) -->
+                <!-- 6. PROFIL SAYA -->
                 <div id="section-profil" class="hidden">
                     <h1 class="text-2xl font-bold mb-6">Profil Saya</h1>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 max-w-md">
@@ -353,7 +388,6 @@
 
         function doLogout() { fetch('api.php?action=logout').then(() => window.location.reload()); }
 
-        // --- FETCH DATA UTAMA ---
         function loadData() {
             fetch('api.php?action=get_peserta').then(res => res.json()).then(data => {
                 dataGlobal = data;
@@ -361,10 +395,9 @@
                 calculateTotals(data);
             });
             if(isAdmin) loadUsers();
-            loadImages(); // Termasuk logo & galeri
+            loadImages();
         }
 
-        // --- KALKULASI DASHBOARD ---
         function formatRupiah(angka) {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
         }
@@ -373,21 +406,35 @@
             let formIndividu = data.individu.length;
             let formKelompok = data.kelompok.length;
             let orangIndividu = 0, orangKelompok = 0, donatur = 0;
-            let totalDonasiRp = 0; // Tambahan untuk kalkulasi total donasi dalam rupiah
+            let totalDonasiRp = 0; 
 
+            // Kalkulasi Individu
             data.individu.forEach(r => {
                 orangIndividu += (1 + parseInt(r.jumlah_pendamping || 0));
-                if(r.berdonasi.includes("Ya")) {
+                
+                if(r.berdonasi && r.berdonasi.includes("Ya")) {
                     donatur++;
-                    totalDonasiRp += parseInt(r.nominal_donasi || 0);
+                    // Bersihkan dari segala karakter non-digit sebelum parse (mengatasi format tidak valid)
+                    let nominalBersih = String(r.nominal_donasi || '0').replace(/[^0-9]/g, '');
+                    let parsedNominal = parseInt(nominalBersih, 10);
+                    if (!isNaN(parsedNominal)) {
+                        totalDonasiRp += parsedNominal;
+                    }
                 }
             });
             
+            // Kalkulasi Kelompok
             data.kelompok.forEach(r => {
                 orangKelompok += parseInt(r.jumlah_anggota || 0);
-                if(r.berdonasi.includes("Ya")) {
+                
+                if(r.berdonasi && r.berdonasi.includes("Ya")) {
                     donatur++;
-                    totalDonasiRp += parseInt(r.nominal_donasi || 0);
+                    // Bersihkan dari segala karakter non-digit sebelum parse (mengatasi format tidak valid)
+                    let nominalBersih = String(r.nominal_donasi || '0').replace(/[^0-9]/g, '');
+                    let parsedNominal = parseInt(nominalBersih, 10);
+                    if (!isNaN(parsedNominal)) {
+                        totalDonasiRp += parsedNominal;
+                    }
                 }
             });
 
@@ -400,11 +447,10 @@
             document.getElementById('total-semua-orang').innerHTML = `${orangIndividu + orangKelompok} <span class="text-lg font-normal">Orang</span>`;
             document.getElementById('total-donatur').innerHTML = `${donatur} <span class="text-sm font-normal text-slate-500">Pihak</span>`;
             
-            // Set Nominal Uang Donasi
+            // Set Nominal Uang Donasi Fix
             document.getElementById('total-donasi-rp').innerText = formatRupiah(totalDonasiRp);
         }
 
-        // --- RENDER TABEL ---
         function renderTables(data) {
             const tbIndividu = document.getElementById('tbody-individu');
             tbIndividu.innerHTML = data.individu.map(r => `
@@ -414,8 +460,8 @@
                     <td class="p-4">${r.asal_sekolah} (${r.tahun_lulus})</td>
                     <td class="p-4">${r.no_wa}</td>
                     <td class="p-4">${r.jumlah_pendamping} Pendamping</td>
-                    <td class="p-4"><span class="px-2 py-1 rounded text-xs font-semibold ${r.berdonasi.includes('Ya') ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'}">${r.berdonasi}</span></td>
-                    <td class="p-4 font-semibold text-slate-700">${r.berdonasi.includes('Ya') ? formatRupiah(r.nominal_donasi) : '-'}</td>
+                    <td class="p-4"><span class="px-2 py-1 rounded text-xs font-semibold ${r.berdonasi && r.berdonasi.includes('Ya') ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'}">${r.berdonasi}</span></td>
+                    <td class="p-4 font-semibold text-slate-700">${r.berdonasi && r.berdonasi.includes('Ya') ? formatRupiah(r.nominal_donasi) : '-'}</td>
                 </tr>
             `).join('') || '<tr><td colspan="7" class="p-4 text-center">Belum ada data</td></tr>';
 
@@ -427,14 +473,13 @@
                     <td class="p-4">${r.sekolah_angkatan || (r.asal_sekolah + " - " + r.angkatan)}</td>
                     <td class="p-4 font-bold text-blue-600">${r.jumlah_anggota} Org</td>
                     <td class="p-4">${r.no_wa_kelompok}</td>
-                    <td class="p-4"><span class="px-2 py-1 rounded text-xs font-semibold ${r.berdonasi.includes('Ya') ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'}">${r.berdonasi}</span></td>
-                    <td class="p-4 font-semibold text-slate-700">${r.berdonasi.includes('Ya') ? formatRupiah(r.nominal_donasi) : '-'}</td>
+                    <td class="p-4"><span class="px-2 py-1 rounded text-xs font-semibold ${r.berdonasi && r.berdonasi.includes('Ya') ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'}">${r.berdonasi}</span></td>
+                    <td class="p-4 font-semibold text-slate-700">${r.berdonasi && r.berdonasi.includes('Ya') ? formatRupiah(r.nominal_donasi) : '-'}</td>
                     <td class="p-4 text-xs text-slate-500 whitespace-pre-wrap min-w-[200px]">${r.daftar_anggota}</td>
                 </tr>
             `).join('') || '<tr><td colspan="8" class="p-4 text-center">Belum ada data</td></tr>';
         }
 
-        // --- PENCARIAN (LIVE SEARCH) ---
         function searchTable(inputId, tbodyId) {
             const input = document.getElementById(inputId).value.toLowerCase();
             const rows = document.getElementById(tbodyId).getElementsByTagName('tr');
@@ -447,10 +492,8 @@
             }
         }
 
-        // --- EXPORT CSV ---
         function exportCSV(tipe) {
             let csv = [];
-            
             if (tipe === 'individu' || tipe === 'semua') {
                 if(tipe === 'semua') csv.push("--- JALUR INDIVIDU ---");
                 csv.push("Tanggal,Tipe,Nama Lengkap,Asal Sekolah & Tahun,No WA,Jml Pendamping,Total Orang Hadir,Donasi,Nominal Donasi");
@@ -459,7 +502,6 @@
                     csv.push(`"${r.tanggal_daftar}","Individu","${r.nama_lengkap}","${r.asal_sekolah} (${r.tahun_lulus})","'${r.no_wa}","${r.jumlah_pendamping}","${totalHadir}","${r.berdonasi}","${r.nominal_donasi}"`);
                 });
             }
-
             if (tipe === 'kelompok' || tipe === 'semua') {
                 if(tipe === 'semua') { csv.push(""); csv.push("--- JALUR KELOMPOK ---"); }
                 csv.push("Tanggal,Tipe,Nama Perwakilan,Sekolah & Angkatan,No WA Perwakilan,Jml Anggota (Total Hadir),Daftar Anggota,Donasi,Nominal Donasi");
@@ -480,7 +522,6 @@
             document.body.removeChild(link);
         }
 
-        // --- MANAJEMEN USER (ADMINISTRATOR ONLY) ---
         function loadUsers() {
             fetch('api.php?action=get_users').then(res => res.json()).then(data => {
                 document.getElementById('tbody-users').innerHTML = data.map(u => `
@@ -559,19 +600,21 @@
         // --- MANAJEMEN KONTEN GAMBAR ---
         function loadImages() {
             fetch('api.php?action=get_pengaturan').then(res => res.json()).then(data => {
-                // Terapkan ke Dashboard UI Admin itu Sendiri
                 if(data.favicon) document.getElementById('admin-favicon').href = data.favicon;
                 if(data.logo_utama) document.getElementById('sidebar-logo').src = data.logo_utama;
                 
-                // Terapkan ke menu Manajemen Konten (Jika dia adalah Administrator)
                 if(!isAdmin) return;
                 
-                if(data.favicon) document.getElementById('preview-favicon').src = data.favicon;
-                if(data.logo_utama) document.getElementById('preview-logo_utama').src = data.logo_utama;
-                if(data.qris_donasi) document.getElementById('preview-qris_donasi').src = data.qris_donasi;
-                
-                // Load 8 Galeri
-                for(let i=1; i<=8; i++) {
+                const previewKeys = [
+                    'favicon', 'logo_utama', 'qris_donasi', 
+                    'img_hero_bg', 'img_hero_1', 'img_hero_2', 'img_hero_3', 
+                    'img_tentang', 'img_sc_1', 'img_sc_2', 'img_sc_3', 'img_sc_4'
+                ];
+                previewKeys.forEach(k => {
+                    if(data[k]) document.getElementById(`preview-${k}`).src = data[k];
+                });
+
+                for(let i=1; i<=16; i++) {
                     if(data[`galeri_${i}`]) {
                         document.getElementById(`preview-galeri_${i}`).src = data[`galeri_${i}`];
                     }
@@ -579,29 +622,50 @@
             });
         }
 
+        // FUNGSI KOMPRESI GAMBAR (CANVAS) SEBELUM UPLOAD AGAR DB TIDAK BERAT
         function convertToBase64(fileInput, previewId, dbKey) {
             const file = fileInput.files[0];
             if (file) {
-                // Jika ingin limit ukuran file bisa ditambahkan disini
-                // if (file.size > 2000000) { alert('Ukuran file maks 2MB'); return; }
-
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const base64String = e.target.result;
-                    document.getElementById(previewId).src = base64String;
-                    fetch('api.php?action=simpan_pengaturan', {
-                        method: 'POST', headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ kunci: dbKey, nilai: base64String })
-                    }).then(res => res.json()).then(res => {
-                        if(res.status === 'success') alert('Gambar berhasil diperbarui!');
-                        else alert('Terjadi kesalahan saat menyimpan gambar.');
-                    });
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        // Batasi ukuran maksimal gambar untuk keamanan dan keringanan load JSON
+                        const MAX_WIDTH = 1000;
+                        const MAX_HEIGHT = 1000;
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+                        } else {
+                            if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
+                        }
+
+                        canvas.width = width; canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Kompres jadi JPEG dengan quality 75%
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+                        
+                        document.getElementById(previewId).src = dataUrl;
+                        
+                        fetch('api.php?action=simpan_pengaturan', {
+                            method: 'POST', headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ kunci: dbKey, nilai: dataUrl })
+                        }).then(res => res.json()).then(res => {
+                            if(res.status === 'success') alert('Gambar berhasil diperbarui!');
+                            else alert('Terjadi kesalahan saat menyimpan gambar.');
+                        });
+                    }
+                    img.src = e.target.result;
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        // INIT APP
         loadData();
     </script>
 <?php endif; ?>
