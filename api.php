@@ -10,8 +10,8 @@ header("Access-Control-Allow-Headers: Content-Type");
 // ==========================================
 $host = "localhost";
 $db_name = "bald6243_db_reuni2026";
-$username = "bald6243_reuniakbar2026"; // Sesuaikan dengan username database Anda
-$password = "m[Ucp__.QtpJF2Fu";     // Sesuaikan dengan password database Anda
+$username = "bald6243_reuniakbar2026";
+$password = "m[Ucp__.QtpJF2Fu";
 
 
 try {
@@ -21,11 +21,19 @@ try {
     // Auto-fix tabel admin & pengecekan pengaturan
     $conn->query("ALTER TABLE admin_users ADD COLUMN IF NOT EXISTS role ENUM('administrator', 'admin') DEFAULT 'admin'");
     
-    // Memastikan baris galeri_1 s/d galeri_8 ada di database jika belum (Opsional namun aman)
-    for($i=1; $i<=8; $i++) {
-        $cek = $conn->query("SELECT * FROM pengaturan_website WHERE kunci_pengaturan = 'galeri_$i'")->rowCount();
+    // Inisialisasi Kunci Pengaturan untuk semua gambar (Favicon, Logo, Hero, SC, dll)
+    $daftar_kunci = [
+        'favicon', 'logo_utama', 'qris_donasi', 
+        'img_hero_bg', 'img_hero_1', 'img_hero_2', 'img_hero_3', 
+        'img_tentang', 'img_sc_1', 'img_sc_2', 'img_sc_3', 'img_sc_4'
+    ];
+    // Tambahkan 16 slot galeri
+    for($i=1; $i<=16; $i++) { $daftar_kunci[] = "galeri_$i"; }
+
+    foreach($daftar_kunci as $kunci) {
+        $cek = $conn->query("SELECT * FROM pengaturan_website WHERE kunci_pengaturan = '$kunci'")->rowCount();
         if($cek == 0) {
-            $conn->query("INSERT INTO pengaturan_website (kunci_pengaturan, nilai_pengaturan) VALUES ('galeri_$i', '')");
+            $conn->query("INSERT INTO pengaturan_website (kunci_pengaturan, nilai_pengaturan) VALUES ('$kunci', '')");
         }
     }
 } catch(PDOException $exception) {
@@ -102,13 +110,8 @@ if ($action == 'submit_daftar' && !empty($data['tipe_pendaftaran'])) {
                 'wa' => $data['wa'], 'domisili' => $data['domisili'], 'jml' => $data['jmlPendamping'], 'berdonasi' => $berdonasi, 'nominal' => $nominal
             ]);
         } else {
-            // Karena payload formatnya gabungan "SMA X - Angkatan Y" kita bisa pecah atau masukkan mentah
             $sekolahAngkatan = $data['sekolahAngkatan'];
             $parts = explode(" - Angkatan ", $sekolahAngkatan);
-            
-            // Cek apakah tabel pendaftaran_kelompok mendukung kolom sekolah_angkatan atau harus dipisah
-            // Jika Anda sudah mengubah struktur tabel menjadi 1 kolom (sekolah_angkatan)
-            // Kami memasukkan asal sekolah sebagai fallback jika database masih minta asal_sekolah & angkatan.
             
             $stmt = $conn->prepare("INSERT INTO pendaftaran_kelompok (nama_perwakilan, no_wa_kelompok, asal_sekolah, angkatan, jumlah_anggota, daftar_anggota, berdonasi, nominal_donasi) VALUES (:nama, :wa, :asal, :angkatan, :jml, :daftar, :berdonasi, :nominal)");
             
